@@ -1,0 +1,11 @@
+.card {
+  &-group {
+    display: grid;
+    grid-gap: $gutter;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  border: 1px solid $black;
+  flex: 1;
+  padding: 1rem;
+}

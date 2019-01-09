@@ -1,0 +1,9 @@
+@mixin container($width: false) {
+  width: 100%;
+  @if $width {
+    max-width: $width;
+  }
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 $gutter;
+}
