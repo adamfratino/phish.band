@@ -45,7 +45,7 @@ class Card extends React.Component {
   }
 
   render() {
-    let {locationName, date, thumbnail, set1, set2, set3, encore, id} = this.props
+    let {locationName, date, run, thumbnail, set1, set2, set3, encore, id} = this.props
     let {address} = this.state
 
     return (
@@ -53,14 +53,17 @@ class Card extends React.Component {
         <AccordionItem>
           <AccordionItemTitle className="card__details">
             <div className="card__date">
-              <div>
-                <Moment format="MMM DD" date={ date } className="card__month" />
-                <Moment format="dddd" date={ date } className="card__weekday" />
-              </div>
+              <Moment format="MMM DD" date={ date } className="card__month" />
+              <Moment format="dddd" date={ date } className="card__weekday" />
             </div>
             <div className="card__location">
+              {run &&
+                <div className="card__runs">
+                  {run.map(item => <small className="card__run">{ item }</small>)}
+                </div>
+              }
               <h2 className="card__venue">{ locationName }</h2>
-              <p className="card__location">{ address }</p>
+              <p className="card__address">{ address }</p>
             </div>
           </AccordionItemTitle>
 
@@ -75,7 +78,7 @@ class Card extends React.Component {
             {set2 &&
               <ul className="card__sets-set">
                 <strong className="card__sets-title">Second [{ set2.length }]</strong>
-                {set2.map( (song, i) => <li key={`${id}_${i}`} className="card__sets-song">{ song }</li>)}
+                {set2.map( (song, i) => <li key={`${id}_${i+1}`} className="card__sets-song">{ song }</li>)}
               </ul>
             }
             {set3 &&

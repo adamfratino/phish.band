@@ -1,7 +1,6 @@
 .card {
-  cursor: pointer;
   &:hover {
-    .card__date > div {
+    .card__date {
       background-color: $green;
       transition: background-color 100ms ease;
     }
@@ -9,6 +8,7 @@
 
   &__details {
     align-items: center;
+    cursor: pointer;
     display: flex;
     height: 12rem;
     padding: 0 $gutter;
@@ -18,29 +18,23 @@
 
     &[aria-selected="true"] {
       background-color: $green;
-      .card__date > div {
+      .card__date {
         background-color: $green;
       }
     }
   }
 
   &__date {
-    margin-right: $gutter*2;
-    width: 18rem;
     display: flex;
+    align-items: center;
     justify-content: center;
-
-    & > div {
-      width: 14rem;
-      padding: $gutter;
-      background-color: $dark-blue;
-      color: $white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.1rem;
-    }
+    width: 14rem;
+    margin-right: $gutter*2;
+    height: 8rem;
+    background-color: $dark-blue;
+    color: $white;
+    flex-direction: column;
+    font-size: 1.1rem;
   }
 
   &__month,
@@ -50,42 +44,64 @@
   }
 
   &__month {
-    font-size: 2.2rem;
-    margin-bottom: $gutter/8;
+    font-size: 2.6rem;
+    margin-bottom: $gutter/4;
   }
 
   &__weekday {
     font-size: 1.1rem;
   }
 
-  &__venue {
-    font-size: 3.8rem;
-    font-weight: 900;
-    letter-spacing: -1px;
+  &__location {
+    height: 100%;
+    padding: 2rem 0;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    text-transform: uppercase;
   }
 
-  &__location {
+  &__run {
+    display: inline-block;
+    background-color: $dark-blue;
+    color: $white;
+    padding: $gutter/6 $gutter/2;
+    font-size: 0.9rem;
+    font-weight: 900;
+    letter-spacing: .1rem;
+
+    &:not(:last-of-type) {
+      margin-right: $gutter/4;
+    }
+  }
+
+  &__venue {
+    font-size: 3.2rem;
+    font-weight: 900;
+  }
+
+  &__address {
     font-size: 1.8rem;
     font-weight: 900;
-    letter-spacing: -1px;
-    text-transform: uppercase;
+    letter-spacing: -0.1rem;
   }
 
   &__sets {
     background-color: $green;
     color: $white;
-    padding: $gutter $gutter $gutter*2;
+    padding: 0 $gutter $gutter*2;
     display: flex;
 
     &-thumbnail {
       background-color: $dark-blue;
       padding: $gutter/2;
-      width: 16rem;
-      height: 16rem;
+      width: 14rem;
+      height: 14rem;
       margin-right: $gutter*2;
       &:hover {
         background-color: $yellow;
-        transition: background-color 200ms ease;
+        transition: background-color 100ms ease;
       }
     }
 
@@ -114,7 +130,7 @@
       // font-style: oblique;
       font-weight: 900;
       letter-spacing: -1px;
-      text-transform: uppercase;
+      // text-transform: uppercase;
       margin-bottom: 0.5rem;
       &:hover {
         color: $yellow;

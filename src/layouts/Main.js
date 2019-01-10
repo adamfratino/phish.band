@@ -25,7 +25,6 @@ class Main extends React.Component {
     this.setState({
       posts: response.items
     })
-    console.log(response.items);
   }
 
   render() {
