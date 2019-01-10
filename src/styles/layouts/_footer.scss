@@ -1,0 +1,9 @@
+.footer {
+  background-color: $dark-blue;
+  color: $yellow;
+  height: 12rem;
+  padding: 0 $gutter;
+
+  display: flex;
+  align-items: center;
+}

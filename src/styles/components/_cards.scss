@@ -1,11 +1,124 @@
 .card {
-  &-group {
-    display: grid;
-    grid-gap: $gutter;
-    grid-template-columns: repeat(3, 1fr);
+  cursor: pointer;
+  &:hover {
+    .card__date > div {
+      background-color: $green;
+      transition: background-color 100ms ease;
+    }
   }
 
-  border: 1px solid $black;
-  flex: 1;
-  padding: 1rem;
+  &__details {
+    align-items: center;
+    display: flex;
+    height: 12rem;
+    padding: 0 $gutter;
+    &:not(:last-of-type) {
+      border-bottom: 1px dashed $green;
+    }
+
+    &[aria-selected="true"] {
+      background-color: $green;
+      .card__date > div {
+        background-color: $green;
+      }
+    }
+  }
+
+  &__date {
+    margin-right: $gutter*2;
+    width: 18rem;
+    display: flex;
+    justify-content: center;
+
+    & > div {
+      width: 14rem;
+      padding: $gutter;
+      background-color: $dark-blue;
+      color: $white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.1rem;
+    }
+  }
+
+  &__month,
+  &__weekday {
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  &__month {
+    font-size: 2.2rem;
+    margin-bottom: $gutter/8;
+  }
+
+  &__weekday {
+    font-size: 1.1rem;
+  }
+
+  &__venue {
+    font-size: 3.8rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+  }
+
+  &__location {
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+  }
+
+  &__sets {
+    background-color: $green;
+    color: $white;
+    padding: $gutter $gutter $gutter*2;
+    display: flex;
+
+    &-thumbnail {
+      background-color: $dark-blue;
+      padding: $gutter/2;
+      width: 16rem;
+      height: 16rem;
+      margin-right: $gutter*2;
+      &:hover {
+        background-color: $yellow;
+        transition: background-color 200ms ease;
+      }
+    }
+
+    &-title {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: $gutter/2;
+    }
+
+    &-set {
+      list-style: none;
+      max-width: 100%;
+      margin: 0;
+      padding-left: 0;
+      width: 28rem;
+      &:not(:last-of-type) {
+        padding-right: $gutter*2;
+      }
+    }
+
+    &-song {
+      color: $dark-blue;
+      font-size: 1.6rem;
+      // font-style: oblique;
+      font-weight: 900;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      &:hover {
+        color: $yellow;
+      }
+    }
+  }
 }

@@ -1,0 +1,13 @@
+.header {
+  background-color: $dark-blue;
+  color: $yellow;
+  height: 8rem;
+  padding: 0 $gutter;
+
+  display: flex;
+  align-items: center;
+
+  h1 {
+    font-size: 2.4rem;
+  }
+}

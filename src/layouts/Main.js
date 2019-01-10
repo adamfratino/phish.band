@@ -16,23 +16,25 @@ class Main extends React.Component {
     this.fetchPosts().then(this.setPosts);
   }
 
-  fetchPosts = () => this.client.getEntries()
+  fetchPosts = () => this.client.getEntries({
+    content_type: 'book',
+    order: '-fields.date'
+  })
 
   setPosts = response => {
     this.setState({
       posts: response.items
     })
+    console.log(response.items);
   }
 
   render() {
     return (
-      <main className="main" role="main">
-        <div className="card-group">
-          { this.state.posts.map(({fields}, i) =>
-            <Card key={i} {...fields} />
-          )}
-        </div>
-      </main>
+      <React.Fragment>
+        { this.state.posts.map(({fields, sys}, i) =>
+          <Card key={i} {...fields} {...sys} />
+        )}
+      </React.Fragment>
     )
   }
 }

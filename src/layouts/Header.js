@@ -2,7 +2,9 @@ import React from 'react'
 
 class Header extends React.Component {
   render() {
-    return <header className="header">header</header>
+    return (
+      <h1>phish.band</h1>
+    )
   }
 }
 
