@@ -32,7 +32,7 @@
     justify-content: center;
     margin-right: $gutter*2;
     min-width: 14rem;
-    padding: $gutter/2;
+    padding: $gutter $gutter/2;
     &:hover {
       background-color: $green;
     }
@@ -51,13 +51,15 @@
   }
 
   &__month {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
+    margin: 0.2rem 0;
   }
 
   &__weekday {
     font-size: 1.1rem;
   }
 
+  &__year,
   &__month,
   &__weekday {
     font-weight: 900;
@@ -69,7 +71,7 @@
 
   &__location {
     height: 100%;
-    padding: $gutter 0;
+    padding: $gutter*2 0;
     display: inline-flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -95,13 +97,15 @@
     font-size: 3.2rem;
     font-weight: 900;
     line-height: 1;
+    margin: .5rem 0;
     text-transform: uppercase;
   }
 
   &__address {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 900;
     letter-spacing: -0.1rem;
+    text-transform: uppercase;
   }
 
   &__controls {
@@ -129,10 +133,11 @@
   }
 
   &__button {
+    border: 1rem solid $dark-blue;
     cursor: pointer;
     display: inline-block;
     background-color: $dark-blue;
-    padding: $gutter/2 $gutter/2;
+    padding: $gutter/4;
     min-width: 15rem;
     text-align: center;
     color: $white;
@@ -147,12 +152,19 @@
     .card:not(.is-active) & {
       &:hover {
         background-color: $green;
+        border-color: $green;
       }
+    }
+
+    .card.is-active &:hover,
+    &[aria-selected="true"] {
+      border: $gutter/2 solid $dark-blue;
+      background-color: transparent;
     }
 
     &--toggle {
       &::before {
-        content: "Expand";
+        content: "Quickview";
       }
       &[aria-selected="true"] {
         &::before {
@@ -202,7 +214,6 @@
       flex: 1;
       list-style: none;
       margin: 0;
-      margin-bottom: $gutter*2;
       padding-left: 0;
       &:not(:last-of-type) {
         padding-right: $gutter*2;
@@ -217,9 +228,9 @@
       letter-spacing: -1px;
       // text-transform: uppercase;
       margin-bottom: 0.5rem;
-      &:hover {
-        color: $yellow;
-      }
+      // &:hover {
+      //   color: $yellow;
+      // }
     }
   }
 }

@@ -1,10 +1,11 @@
 import React from 'react'
 import Moment from 'react-moment'
 import Geocode from 'react-geocode'
-import jump from 'jump.js'
+// import jump from 'jump.js'
 import { Link } from 'react-router-dom'
 import { Accordion, AccordionItem, AccordionItemTitle, AccordionItemBody } from 'react-accessible-accordion'
 import 'react-accessible-accordion/dist/minimal-example.css'
+import { toggleAccordion } from '../utilities/toggleAccordion'
 
 Geocode.setApiKey('AIzaSyCzpin5OP1Ly_g9cTKmNtsE6HWTotvPiCk')
 
@@ -13,9 +14,8 @@ class Card extends React.Component {
     address: ''
   }
 
-  componentDidMount() {
+  componentWillMount() {
     let {location} = this.props
-
     this.toCityState(location.lat, location.lon)
   }
 
@@ -45,17 +45,6 @@ class Card extends React.Component {
     )
   }
 
-  toggleAccordion(el) {
-    const accordion = el.target.closest('.card')
-    const target = el.target.closest('[aria-controls]')
-
-    if (target) {
-      accordion.classList.toggle('is-active')
-    }
-
-    console.log(target);
-  }
-
   render() {
     let {locationName, date, run, thumbnail, set1, set2, set3, encore, id} = this.props
     let {address} = this.state
@@ -63,11 +52,12 @@ class Card extends React.Component {
     let dateHash = date.replace(/-/g, '/').split('T')[0]
 
     return (
-      <Accordion className="card" onClick={ this.toggleAccordion }>
+      <Accordion className="card" onClick={ toggleAccordion }>
         <AccordionItem>
 
           <div className="card__details">
             <AccordionItemTitle className="card__date">
+              <Moment format="YYYY" date={ date } className="card__year" />
               <Moment format="MMM DD" date={ date } className="card__month" />
               <Moment format="dddd" date={ date } className="card__weekday" />
             </AccordionItemTitle>
@@ -83,8 +73,8 @@ class Card extends React.Component {
             </div>
 
             <div className="card__controls">
-              <Link to={`/${ dateHash }`} className="card__button card__button--details">Details</Link>
               <AccordionItemTitle className="card__button card__button--toggle"></AccordionItemTitle>
+              <Link to={`/${ dateHash }`} className="card__button card__button--details">Details</Link>
             </div>
 
           </div>
@@ -93,25 +83,25 @@ class Card extends React.Component {
             {thumbnail && <img src={ thumbnail.fields.file.url } className="card__sets-thumbnail" alt="" />}
             {set1 &&
               <ul className="card__sets-set">
-                <strong className="card__sets-title">First [{ set1.length }]</strong>
+                <strong className="card__sets-title">First</strong>
                 {set1.map( (song, i) => <li key={`${id}_${i}`} className="card__sets-song">{ song }</li>)}
               </ul>
             }
             {set2 &&
               <ul className="card__sets-set">
-                <strong className="card__sets-title">Second [{ set2.length }]</strong>
+                <strong className="card__sets-title">Second</strong>
                 {set2.map( (song, i) => <li key={`${id}_${i+1}`} className="card__sets-song">{ song }</li>)}
               </ul>
             }
             {set3 &&
               <ul className="card__sets-set">
-                <strong className="card__sets-title">Third [{ set3.length }]</strong>
+                <strong className="card__sets-title">Third</strong>
                 {set3.map( (song, i) => <li key={`${id}_${i}`} className="card__sets-song">{ song }</li>)}
               </ul>
             }
             {encore &&
               <ul className="card__sets-set">
-                <strong className="card__sets-title">Encore [{ encore.length }]</strong>
+                <strong className="card__sets-title">Encore</strong>
                 {encore.map( (song, i) => <li key={`${id}_${i}`} className="card__sets-song">{ song }</li>)}
               </ul>
             }

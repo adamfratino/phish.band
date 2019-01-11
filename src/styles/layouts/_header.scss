@@ -7,10 +7,10 @@
   color: $yellow;
   height: $header-height;
   padding: 0 $gutter;
-
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  z-index: 999;
 
   h1 {
     font-size: 1.8rem;

@@ -17,7 +17,7 @@ class Main extends React.Component {
     accessToken: '3a6d99cc3d112f7f2c4079ad5e65399ac7f9eac35f96fab44b501f192498aa20'
   })
 
-  componentDidMount() {
+  componentWillMount() {
     this.fetchShows('book')
     .then(response => {
       this.setState({ shows: response.items })
@@ -38,11 +38,12 @@ class Main extends React.Component {
             <Route
               path={`/${fields.date.replace(/-/g, '/').split('T')[0]}`}
               render={() => <Show {...fields} isAuthed={true} />}
+              key={fields.date}
             />
           )}
           <Route
             path="/shows"
-            render={() => <Shows {...this.state} isAuthed={true} />}
+            render={() => <Shows isAuthed={true} />}
           />
           <Route path="/albums" component={Albums} />
         </main>
