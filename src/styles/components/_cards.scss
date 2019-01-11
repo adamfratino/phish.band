@@ -1,39 +1,60 @@
 .card {
-  &:hover {
-    .card__date {
-      background-color: $green;
-      transition: background-color 100ms ease;
+  &.is-active {
+    background-color: $green;
+  }
+
+  &:not(:last-child) {
+    .card__details {
+      border-bottom: 1px dashed $green;
     }
   }
 
   &__details {
     align-items: center;
-    cursor: pointer;
     display: flex;
-    height: 12rem;
     padding: 0 $gutter;
-    &:not(:last-of-type) {
-      border-bottom: 1px dashed $green;
-    }
-
-    &[aria-selected="true"] {
-      background-color: $green;
-      .card__date {
-        background-color: $green;
-      }
+    @include max-screen(414px) {
+      padding: $gutter;
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 
   &__date {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    width: 14rem;
-    margin-right: $gutter*2;
-    height: 8rem;
     background-color: $dark-blue;
+    border: $gutter/2 solid transparent;
     color: $white;
+    cursor: pointer;
+    display: flex;
     flex-direction: column;
+    font-size: 1.1rem;
+    justify-content: center;
+    margin-right: $gutter*2;
+    min-width: 14rem;
+    padding: $gutter/2;
+    &:hover {
+      background-color: $green;
+    }
+    @include max-screen(414px) {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-right: 0;
+      width: 100%;
+      padding: $gutter/4 $gutter;
+    }
+
+    .card.is-active & {
+      border: $gutter/2 solid $dark-blue;
+      background-color: $green;
+    }
+  }
+
+  &__month {
+    font-size: 2.2rem;
+  }
+
+  &__weekday {
     font-size: 1.1rem;
   }
 
@@ -41,25 +62,18 @@
   &__weekday {
     font-weight: 900;
     text-transform: uppercase;
-  }
-
-  &__month {
-    font-size: 2.6rem;
-    margin-bottom: $gutter/4;
-  }
-
-  &__weekday {
-    font-size: 1.1rem;
+    @include max-screen(414px) {
+      font-size: 1.8rem;
+    }
   }
 
   &__location {
     height: 100%;
-    padding: 2rem 0;
+    padding: $gutter 0;
     display: inline-flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: column;
-    text-transform: uppercase;
   }
 
   &__run {
@@ -70,6 +84,7 @@
     font-size: 0.9rem;
     font-weight: 900;
     letter-spacing: .1rem;
+    text-transform: uppercase;
 
     &:not(:last-of-type) {
       margin-right: $gutter/4;
@@ -79,6 +94,8 @@
   &__venue {
     font-size: 3.2rem;
     font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
   }
 
   &__address {
@@ -87,18 +104,85 @@
     letter-spacing: -0.1rem;
   }
 
+  &__controls {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    @include max-screen(414px) {
+      align-self: stretch;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 0;
+    }
+
+    & > * {
+      @include max-screen(414px) {
+        width: calc(50% - #{$gutter/2});
+      }
+      &:not(:last-child) {
+        margin-bottom: $gutter/4;
+        @include max-screen(414px) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+    display: inline-block;
+    background-color: $dark-blue;
+    padding: $gutter/2 $gutter/2;
+    min-width: 15rem;
+    text-align: center;
+    color: $white;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    @include max-screen(414px) {
+      padding: $gutter/1.5;
+    }
+
+    .card:not(.is-active) & {
+      &:hover {
+        background-color: $green;
+      }
+    }
+
+    &--toggle {
+      &::before {
+        content: "Expand";
+      }
+      &[aria-selected="true"] {
+        &::before {
+          content: "Collapse";
+        }
+      }
+    }
+  }
+
   &__sets {
     background-color: $green;
     color: $white;
-    padding: 0 $gutter $gutter*2;
+    padding: $gutter $gutter $gutter*2;
     display: flex;
+    max-width: 100%;
+    @include max-screen(414px) {
+      flex-direction: column;
+    }
 
     &-thumbnail {
       background-color: $dark-blue;
-      padding: $gutter/2;
+      border: 1rem solid $dark-blue;
       width: 14rem;
       height: 14rem;
       margin-right: $gutter*2;
+      @include max-screen(414px) {
+        order: 2;
+        width: 100%;
+        height: auto;
+      }
       &:hover {
         background-color: $yellow;
         transition: background-color 100ms ease;
@@ -106,6 +190,7 @@
     }
 
     &-title {
+      color: $white;
       display: block;
       font-size: 1.2rem;
       font-weight: 900;
@@ -114,11 +199,11 @@
     }
 
     &-set {
+      flex: 1;
       list-style: none;
-      max-width: 100%;
       margin: 0;
+      margin-bottom: $gutter*2;
       padding-left: 0;
-      width: 28rem;
       &:not(:last-of-type) {
         padding-right: $gutter*2;
       }

@@ -1,6 +1,8 @@
 @import "~normalize.css";
+@import "~sass-mediaqueries/media-queries";
 @import "base/variables";
 @import "mixins/container";
+@import "mixins/full-height";
 
 * {
   box-sizing: border-box;
@@ -20,6 +22,7 @@ body {
 // Layouts
 @import "layouts/header";
 @import "layouts/main";
+@import "layouts/show";
 @import "layouts/footer";
 
 // Components

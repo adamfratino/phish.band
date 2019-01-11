@@ -1,10 +1,15 @@
 import React from 'react'
+import Shows from './Shows'
+import Show from './Show'
+import Albums from './Albums'
+import Header from './Header';
+import Footer from './Footer';
+import { Route } from 'react-router-dom'
 import * as contentful from 'contentful'
-import Card from '../components/Card'
 
 class Main extends React.Component {
   state = {
-    posts: []
+    shows: []
   }
 
   client = contentful.createClient({
@@ -13,26 +18,35 @@ class Main extends React.Component {
   })
 
   componentDidMount() {
-    this.fetchPosts().then(this.setPosts);
+    this.fetchShows('book')
+    .then(response => {
+      this.setState({ shows: response.items })
+    });
   }
 
-  fetchPosts = () => this.client.getEntries({
-    content_type: 'book',
+  fetchShows = type => this.client.getEntries({
+    content_type: type,
     order: '-fields.date'
   })
-
-  setPosts = response => {
-    this.setState({
-      posts: response.items
-    })
-  }
 
   render() {
     return (
       <React.Fragment>
-        { this.state.posts.map(({fields, sys}, i) =>
-          <Card key={i} {...fields} {...sys} />
-        )}
+        <Header />
+        <main className="main" role="main">
+          {this.state.shows.map(({fields}) =>
+            <Route
+              path={`/${fields.date.replace(/-/g, '/').split('T')[0]}`}
+              render={() => <Show {...fields} isAuthed={true} />}
+            />
+          )}
+          <Route
+            path="/shows"
+            render={() => <Shows {...this.state} isAuthed={true} />}
+          />
+          <Route path="/albums" component={Albums} />
+        </main>
+        <Footer />
       </React.Fragment>
     )
   }

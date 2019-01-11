@@ -1,6 +1,8 @@
 import React from 'react'
 import Moment from 'react-moment'
 import Geocode from 'react-geocode'
+import jump from 'jump.js'
+import { Link } from 'react-router-dom'
 import { Accordion, AccordionItem, AccordionItemTitle, AccordionItemBody } from 'react-accessible-accordion'
 import 'react-accessible-accordion/dist/minimal-example.css'
 
@@ -8,8 +10,7 @@ Geocode.setApiKey('AIzaSyCzpin5OP1Ly_g9cTKmNtsE6HWTotvPiCk')
 
 class Card extends React.Component {
   state = {
-    address: '',
-    active: false
+    address: ''
   }
 
   componentDidMount() {
@@ -30,7 +31,7 @@ class Card extends React.Component {
           if (component.types.includes('sublocality') || component.types.includes('locality')) {
             address.city = component.long_name
           } else if (component.types.includes('administrative_area_level_1')) {
-            address.state = component.short_name
+            address.state = component.long_name
           } else if (component.types.includes('country')) {
             address.country = component.long_name
           }
@@ -44,28 +45,49 @@ class Card extends React.Component {
     )
   }
 
+  toggleAccordion(el) {
+    const accordion = el.target.closest('.card')
+    const target = el.target.closest('[aria-controls]')
+
+    if (target) {
+      accordion.classList.toggle('is-active')
+    }
+
+    console.log(target);
+  }
+
   render() {
     let {locationName, date, run, thumbnail, set1, set2, set3, encore, id} = this.props
     let {address} = this.state
 
+    let dateHash = date.replace(/-/g, '/').split('T')[0]
+
     return (
-      <Accordion className="card">
+      <Accordion className="card" onClick={ this.toggleAccordion }>
         <AccordionItem>
-          <AccordionItemTitle className="card__details">
-            <div className="card__date">
+
+          <div className="card__details">
+            <AccordionItemTitle className="card__date">
               <Moment format="MMM DD" date={ date } className="card__month" />
               <Moment format="dddd" date={ date } className="card__weekday" />
-            </div>
+            </AccordionItemTitle>
+
             <div className="card__location">
               {run &&
                 <div className="card__runs">
-                  {run.map(item => <small className="card__run">{ item }</small>)}
+                  {run.map(item => <small key={`${date}_${item}`} className="card__run">{ item }</small>)}
                 </div>
               }
               <h2 className="card__venue">{ locationName }</h2>
               <p className="card__address">{ address }</p>
             </div>
-          </AccordionItemTitle>
+
+            <div className="card__controls">
+              <Link to={`/${ dateHash }`} className="card__button card__button--details">Details</Link>
+              <AccordionItemTitle className="card__button card__button--toggle"></AccordionItemTitle>
+            </div>
+
+          </div>
 
           <AccordionItemBody className="card__sets">
             {thumbnail && <img src={ thumbnail.fields.file.url } className="card__sets-thumbnail" alt="" />}

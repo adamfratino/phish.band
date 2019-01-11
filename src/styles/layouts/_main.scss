@@ -1,3 +1,5 @@
 .main {
+  @include full-height;
   background-color: $white;
+  & > * { @include full-height; }
 }

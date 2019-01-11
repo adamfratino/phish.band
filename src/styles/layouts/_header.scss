@@ -1,7 +1,11 @@
 .header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: flex-end;
   background-color: $dark-blue;
   color: $yellow;
-  height: 8rem;
+  height: $header-height;
   padding: 0 $gutter;
 
   display: flex;
@@ -11,5 +15,20 @@
   h1 {
     font-size: 1.8rem;
     font-weight: 900;
+    text-transform: uppercase;
+    margin-right: auto;
+  }
+
+  a {
+    color: $yellow;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-decoration: none;
+    text-transform: uppercase;
+    &:not(:last-of-type) {
+      margin-right: $gutter;
+    }
+    &:hover,
+    &.is-active { text-decoration: underline; }
   }
 }
