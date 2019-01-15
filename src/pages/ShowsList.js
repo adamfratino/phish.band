@@ -15,7 +15,7 @@ class ShowsList extends React.Component {
     return (
       <ul className="shows-list">
         { shows.map(({fields}, i) =>
-          <ShowsCard key={i} {...fields} />
+          <ShowsCard key={`card_${i}`} {...fields} />
         )}
       </ul>
     )
