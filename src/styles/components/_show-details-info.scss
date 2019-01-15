@@ -1,11 +1,45 @@
+$sidebar-width: 30rem;
+
 .show-details__info {
   display: grid;
-  grid-template-columns: 1fr 30rem;
-  padding: $gutter*2 0;
+  grid-gap: 0 $gutter;
+  grid-template-columns: 1fr $sidebar-width;
+  padding: $gutter*2 0 0;
 
   .setlist__song {
-    font-size: 2rem;
+    font-size: 1.8rem;
     letter-spacing: -0.5px;
     margin-bottom: 1rem;
+  }
+
+  &__sidebar {
+    align-self: flex-end;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  &__metrics {
+    display: grid;
+    grid-gap: $gutter;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: $gutter;
+    &--card {
+      align-items: center;
+      background-color: $dark-blue;
+      color: $white;
+      display: flex;
+      flex-direction: column;
+      font-size: 6rem;
+      height: calc(#{$sidebar-width}/2 - #{$gutter}/2);
+      justify-content: center;
+      padding: $gutter;
+      &::after {
+        font-size: 1.2rem;
+        padding-top: $gutter/4;
+      }
+      &.song-total::after {
+        content: "Songs";
+      }
+    }
   }
 }

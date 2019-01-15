@@ -18,7 +18,7 @@ class ShowDetails extends React.Component {
     let details = {}
     if (shows.length) details = match.fields
 
-    const { locationName, run, set1, set2, set3, encore } = details
+    const { locationName, run, set1, set2, set3, encore, thumbnail } = details
 
     return (
       <div className="show-details">
@@ -32,6 +32,7 @@ class ShowDetails extends React.Component {
           set2={set2}
           set3={set3}
           encore={encore}
+          thumbnail={thumbnail}
         />
       </div>
     )

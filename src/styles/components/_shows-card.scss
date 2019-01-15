@@ -160,7 +160,7 @@
   }
 
   &__body {
-    align-items: self-start;
+    align-items: flex-start;
     background-color: $green;
     color: $white;
     display: grid;

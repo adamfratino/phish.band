@@ -5,7 +5,6 @@ const Header = () => (
   <header className="header">
     <h1><NavLink to="/">Phish.band</NavLink></h1>
     <NavLink activeClassName="is-active" to="/shows">Shows</NavLink>
-    <NavLink activeClassName="is-active" to="/albums">Albums</NavLink>
   </header>
 )
 

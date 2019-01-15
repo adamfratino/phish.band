@@ -39,16 +39,18 @@
       &::after {
         content: "➤";
         font-size: 65%;
-        margin: .5rem 0 0 1rem;
+        margin: .3rem 0 0 1rem;
       }
 
       & + li {
-        margin-left: $gutter;
+        margin-left: $gutter/2;
       }
     }
 
+    &.segue_undefined { display: none; }
+
     small {
-      font-size: 60%;
+      font-size: 65%;
     }
   }
 }
