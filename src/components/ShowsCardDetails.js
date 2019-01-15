@@ -1,6 +1,6 @@
 import React from 'react'
 import Moment from 'react-moment'
-import { Accordion, AccordionItem, AccordionItemBody } from 'react-accessible-accordion'
+import { Accordion, AccordionItem, AccordionItemTitle, AccordionItemBody } from 'react-accessible-accordion'
 import 'react-accessible-accordion/dist/minimal-example.css'
 import { toggleAccordion } from '../utilities/toggleAccordion'
 
@@ -30,11 +30,11 @@ class ShowsCardDetails extends React.Component {
       <Accordion onClick={ toggleAccordion }>
         <AccordionItem>
           <div className="shows-card__details">
-            <div className="shows-card__date">
+            <AccordionItemTitle className="shows-card__date">
               <Moment format="YYYY" date={ date } className="shows-card__date--year" />
               <Moment format="MMM DD" date={ date } className="shows-card__date--month" />
               <Moment format="dddd" date={ date } className="shows-card__date--weekday" />
-            </div>
+            </AccordionItemTitle>
 
             <div className="shows-card__location">
               {run &&

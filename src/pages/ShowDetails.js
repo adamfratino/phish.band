@@ -1,12 +1,20 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    data: state.data
+  }
+}
 
 class ShowDetails extends React.Component {
   render() {
-    const { match } = this.props
+    const { id } = this.props.match.params
+
     return (
-      <div className="show-details">{ match.params.id }</div>
+      <div className="show-details">Show: { id }</div>
     )
   }
 }
 
-export default ShowDetails
+export default connect(mapStateToProps)(ShowDetails)
