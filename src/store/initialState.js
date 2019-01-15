@@ -1,5 +1,6 @@
 export default {
   data: {
-    shows: []
+    shows: [],
+    albums: []
   }
 }

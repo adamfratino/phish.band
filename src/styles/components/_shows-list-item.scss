@@ -1,0 +1,106 @@
+.shows-card {
+  &:not(:last-child) {
+    .shows-card__details {
+      border-bottom: 1px dashed $green;
+    }
+  }
+
+  &__details {
+    align-items: center;
+    display: flex;
+    padding: 0 $gutter;
+    @include max-screen(414px) {
+      padding: $gutter;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__date {
+    align-items: center;
+    background-color: $dark-blue;
+    border: $gutter/2 solid transparent;
+    color: $white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1rem;
+    justify-content: center;
+    margin-right: $gutter*2;
+    min-width: 14rem;
+    padding: $gutter $gutter/2;
+    &:hover {
+      background-color: $green;
+    }
+    @include max-screen(414px) {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-right: 0;
+      width: 100%;
+      padding: $gutter/4 $gutter;
+    }
+
+    // .card.is-active & {
+    //   border: $gutter/2 solid $dark-blue;
+    //   background-color: $green;
+    // }
+
+    &--month {
+      font-size: 2.4rem;
+      margin: 0.2rem 0;
+    }
+
+    &--weekday {
+      font-size: 1.1rem;
+    }
+
+    &--year,
+    &--month,
+    &--weekday {
+      font-weight: 900;
+      text-transform: uppercase;
+      @include max-screen(414px) {
+        font-size: 1.8rem;
+      }
+    }
+  }
+
+  &__location {
+    height: 100%;
+    padding: $gutter*2 0;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  &__run {
+    display: inline-block;
+    background-color: $dark-blue;
+    color: $white;
+    padding: $gutter/6 $gutter/2;
+    font-size: 0.9rem;
+    font-weight: 900;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+
+    &:not(:last-of-type) {
+      margin-right: $gutter/4;
+    }
+  }
+
+  &__venue {
+    font-size: 3.2rem;
+    font-weight: 900;
+    line-height: 1;
+    margin: .5rem 0;
+    text-transform: uppercase;
+  }
+
+  &__address {
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: -0.1rem;
+    text-transform: uppercase;
+  }
+}

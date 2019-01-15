@@ -1,9 +1,11 @@
 import * as contentful from 'contentful'
 import * as actions from './shows/actions'
 
+const apiKeys = require('../data/apiKeys.json')
+
 const client = contentful.createClient({
-  space: 'ia5jsksmxyiy',
-  accessToken: '3a6d99cc3d112f7f2c4079ad5e65399ac7f9eac35f96fab44b501f192498aa20'
+  space: apiKeys.contentful.space,
+  accessToken: apiKeys.contentful.accessToken
 })
 
 const error = err => console.log(err)
