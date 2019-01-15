@@ -1,0 +1,46 @@
+.setlist {
+  display: flex;
+  max-width: 100%;
+  @include max-screen(414px) {
+    flex-direction: column;
+  }
+
+  &__set {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__title {
+    color: $white;
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: $gutter/2;
+  }
+
+  &__song {
+    align-items: center;
+    color: $dark-blue;
+    display: flex;
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 0.8rem;
+
+    &.segue_true + li {
+      margin-left: $gutter;
+    }
+
+    span {
+      // color: $white;
+      font-size: 65%;
+      margin: 0 $gutter/2;
+    }
+
+    small {
+      font-size: 50%;
+    }
+  }
+}

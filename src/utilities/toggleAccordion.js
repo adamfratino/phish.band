@@ -1,5 +1,5 @@
 export const toggleAccordion = element => {
-  const accordion = element.target.closest('.card')
+  const accordion = element.target.closest('.accordion')
   const target = element.target.closest('[aria-controls]')
 
   if (target) {

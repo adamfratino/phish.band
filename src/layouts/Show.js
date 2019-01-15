@@ -5,7 +5,7 @@ import SongDistribution from '../components/SongDistribution'
 import DarkSkyApi from 'dark-sky-api'
 import DarkSky from 'react-icons-weather'
 
-// import { convertToSeconds } from '../utilities/convertToSeconds'
+import { convertToSeconds } from '../utilities/convertToSeconds'
 
 DarkSkyApi.apiKey = '21514df862a709b7249a551a4246c802'
 const mapTheme = require('../data/mapTheme.json')
@@ -31,8 +31,8 @@ const MapMarker = () => <svg version="1.1" id="Layer_1" x="0px" y="0px"
 class Show extends React.Component {
   state = {
     weather: {
-      summary: ' ',
-      icon: 'snow'
+      summary: '',
+      icon: 'clear-night'
     },
 		songTimes: []
   }
@@ -43,8 +43,15 @@ class Show extends React.Component {
 
   componentWillMount() {
     this.getForecast()
-		// convertToSeconds(this.props.set1Times[0])
+		// this.convertSetTime(this.props.set1Times)
   }
+
+	convertSetTime(set) {
+		let x = set.map((song, i) => convertToSeconds(song))
+		this.setState({
+			songTimes: x
+		})
+	}
 
   getForecast() {
     const date = `${this.props.date.split('T')[0]}T19:00:00`
@@ -65,22 +72,22 @@ class Show extends React.Component {
   }
 
   render() {
-    let {locationName, date, location, run, thumbnail, set1, set1Times, set2, set2Times, set3, set3Times, encore,  encoreTimes, id} = this.props
+    let {locationName, date, location, run, thumbnail, set1, set2, set3, encore, id} = this.props
 
     // Calculate tatal minutes for each set
-    let set1Minutes = set1Times ? set1Times.map(time => +time.split(':')[0]) : undefined
-    let set2Minutes = set2Times ? set2Times.map(time => +time.split(':')[0]) : undefined
-    let set3Minutes = set3Times ? set3Times.map(time => +time.split(':')[0]) : undefined
-    let encoreMinutes = encoreTimes ? encoreTimes.map(time => +time.split(':')[0]) : undefined
+    // let set1Minutes = set1Times ? set1Times.map(time => +time.split(':')[0]) : undefined
+    // let set2Minutes = set2Times ? set2Times.map(time => +time.split(':')[0]) : undefined
+    // let set3Minutes = set3Times ? set3Times.map(time => +time.split(':')[0]) : undefined
+    // let encoreMinutes = encoreTimes ? encoreTimes.map(time => +time.split(':')[0]) : undefined
 
     let totalSongs = 0
 
     // Calculate total songs
-    if (set3) {
-      totalSongs = set1.length + set2.length + set3.length + encore.length
-    } else {
-      totalSongs = set1.length + set2.length + encore.length
-    }
+    // if (set3) {
+    //   totalSongs = set1.length + set2.length + set3.length + encore.length
+    // } else {
+    //   totalSongs = set1.length + set2.length + encore.length
+    // }
 
     return (
       <div className="show">
@@ -102,11 +109,11 @@ class Show extends React.Component {
                 {set1.map( (song, i) =>
                   <li key={`${id}_${i}`} className="card__sets-song">
                     { song }
-                    {set1Times && <small>{set1Times[i]}</small>}
+                    {<small>time</small>}
                   </li>
                 )}
                 <strong className="show__setlist-info">{ set1.length } songs</strong>
-                { set1Minutes && <strong className="show__setlist-info">{set1Minutes.reduce((a, b) => a + b)} minutes</strong>}
+                {<strong className="show__setlist-info">reduce minutes</strong>}
               </ul>
             }
             {set2 &&
@@ -115,11 +122,11 @@ class Show extends React.Component {
                 {set2.map( (song, i) =>
                   <li key={`${id}_${i}`} className="card__sets-song">
                     { song }
-                    {set2Times && <small>{set2Times[i]}</small>}
+                    {<small>time</small>}
                   </li>
                 )}
                 <strong className="show__setlist-info">{ set2.length } songs</strong>
-                { set2Minutes && <strong className="show__setlist-info">{set2Minutes.reduce((a, b) => a + b)} minutes</strong>}
+                {<strong className="show__setlist-info">reduce minutes</strong>}
               </ul>
             }
             {set3 &&
@@ -128,11 +135,11 @@ class Show extends React.Component {
                 {set3.map( (song, i) =>
                   <li key={`${id}_${i}`} className="card__sets-song">
                     { song }
-                    {set3Times && <small>{set3Times[i]}</small>}
+                    {<small>time</small>}
                   </li>
                 )}
                 <strong className="show__setlist-info">{ set3.length } songs</strong>
-                { set3Minutes && <strong className="show__setlist-info">{set3Minutes.reduce((a, b) => a + b)} minutes</strong>}
+                {<strong className="show__setlist-info">reduce minutes</strong>}
               </ul>
             }
             {encore &&
@@ -141,11 +148,11 @@ class Show extends React.Component {
                 {encore.map( (song, i) =>
                   <li key={`${id}_${i}`} className="card__sets-song">
                     { song }
-                    {encoreTimes && <small>{encoreTimes[i]}</small>}
+                    {<small>time</small>}
                   </li>
                 )}
                 <strong className="show__setlist-info">{ encore.length } songs</strong>
-                { encoreMinutes && <strong className="show__setlist-info">{encoreMinutes.reduce((a, b) => a + b)} minutes</strong>}
+                {<strong className="show__setlist-info">reduce minutes</strong>}
               </ul>
             }
           </div>

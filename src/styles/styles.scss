@@ -8,6 +8,7 @@
   box-sizing: border-box;
   &:focus { outline: none; }
 }
+img { vertical-align: middle; }
 h1, h2, h3, h4, h5, h6, p { margin: 0; }
 html { font-size: 62.5%; }
 body {
@@ -22,9 +23,15 @@ body {
 // Layouts
 @import "layouts/header";
 @import "layouts/main";
-@import "layouts/show";
-@import "layouts/albums";
+// @import "layouts/show";
+// @import "layouts/albums";
 @import "layouts/footer";
 
+// Pages
+@import "pages/shows-list";
+
 // Components
-@import "components/cards";
+// @import "components/cards";
+@import "components/shows-list-item";
+@import "components/setlist";
+@import "components/thumbnail";

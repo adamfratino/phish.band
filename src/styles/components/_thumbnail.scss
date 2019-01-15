@@ -1,0 +1,13 @@
+.thumbnail {
+  background-color: $dark-blue;
+  border: 1rem solid $dark-blue;
+  height: auto;
+  // &:hover {
+  //   border-color: $yellow;
+  //   transition: background-color 100ms ease;
+  // }
+
+  img {
+    width: 100%;
+  }
+}
