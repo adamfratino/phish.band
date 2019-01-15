@@ -1,6 +1,6 @@
 .show {
-  background-color: $green;
-  padding: $gutter*2 0 $gutter;
+  // background-color: $green;
+  // padding: $gutter*2 0 $gutter;
 
   &-inner {
     padding: 0 $gutter;
@@ -104,21 +104,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: $gutter*2 $gutter/2;
   }
 
   &__weather {
     font-size: 5rem;
-    padding: $gutter;
     &-icon {
       transform: translateY(-.5rem);
     }
     &-summary {
       display: block;
-      margin-top: .5rem;
       font-size: 1.2rem;
       font-weight: 900;
       text-transform: uppercase;
       justify-self: flex-end;
+      margin-top: $gutter/4;
     }
   }
 

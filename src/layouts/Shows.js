@@ -12,7 +12,7 @@ class Shows extends React.Component {
     accessToken: '3a6d99cc3d112f7f2c4079ad5e65399ac7f9eac35f96fab44b501f192498aa20'
   })
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchShows('book')
     .then(response => {
       this.setState({
