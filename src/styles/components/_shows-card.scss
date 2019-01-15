@@ -90,27 +90,8 @@
     justify-content: center;
   }
 
-  &__run {
-    display: inline-block;
-    background-color: $dark-blue;
-    color: $white;
-    padding: $gutter/6 $gutter/2;
-    font-size: 0.9rem;
-    font-weight: 900;
-    letter-spacing: .1rem;
-    text-transform: uppercase;
-
-    &:not(:last-of-type) {
-      margin-right: $gutter/4;
-    }
-  }
-
-  &__venue {
-    font-size: 3.2rem;
-    font-weight: 900;
-    line-height: 1;
-    margin: .5rem 0;
-    text-transform: uppercase;
+  h1 {
+    margin: $gutter/4 0;
   }
 
   &__address {

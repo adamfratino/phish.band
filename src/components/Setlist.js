@@ -12,9 +12,11 @@ class Setlist extends React.Component {
         <strong className="setlist__title">{title}</strong>
         {songs.map((song, i) =>
           <li key={`song_${i}`} className={`setlist__song segue_${isSegue[i]}`}>
-            { song }
-            {isSegue[i] && <span>{"➤"}</span>}
-            {showDuration && <small>{durations[i]}</small>}</li>
+            <span>
+              { song }
+              {showDuration && <small>{durations[i]}</small>}
+            </span>
+          </li>
         )}
       </ol>
     )

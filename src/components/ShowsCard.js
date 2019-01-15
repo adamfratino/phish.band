@@ -1,6 +1,4 @@
 import React from 'react'
-
-// import { Accordion, AccordionItem, AccordionItemTitle, AccordionItemBody } from 'react-accessible-accordion'
 import ShowsCardDetails from './ShowsCardDetails'
 
 class ShowsCard extends React.Component {

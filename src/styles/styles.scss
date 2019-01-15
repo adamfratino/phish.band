@@ -20,6 +20,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+// Base
+@import "base/typography";
+
 // Layouts
 @import "layouts/header";
 @import "layouts/main";
@@ -29,9 +32,12 @@ body {
 
 // Pages
 @import "pages/shows-list";
+@import "pages/show-details";
 
 // Components
-// @import "components/cards";
-@import "components/shows-list-item";
+@import "components/runs";
+@import "components/shows-card";
+@import "components/show-details-header";
+@import "components/show-details-info";
 @import "components/setlist";
 @import "components/thumbnail";

@@ -38,11 +38,11 @@ class ShowsCardDetails extends React.Component {
 
             <div className="shows-card__location">
               {run &&
-                <div className="shows-card__runs">
-                  {run.map(item => <small key={`${date}_${item}`} className="shows-card__run">{ item }</small>)}
+                <div className="runs">
+                  {run.map(item => <small key={`${date}_${item}`} className="runs__run">{ item }</small>)}
                 </div>
               }
-              <h2 className="shows-card__venue">{ locationName }</h2>
+              <h1>{ locationName }</h1>
             </div>
 
             <ShowsCardControls path={`show/${date.split('T')[0]}`} />

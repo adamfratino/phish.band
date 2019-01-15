@@ -1,0 +1,11 @@
+.show-details__info {
+  display: grid;
+  grid-template-columns: 1fr 30rem;
+  padding: $gutter*2 0;
+
+  .setlist__song {
+    font-size: 2rem;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+  }
+}

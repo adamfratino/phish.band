@@ -94,8 +94,8 @@ class Show extends React.Component {
         <div className="show-inner">
           <div className="show__details">
             {run &&
-              <div className="card__runs">
-                {run.map(item => <small key={`${date}_${item}`} className="card__run">{ item }</small>)}
+              <div className="runs">
+                {run.map(item => <small key={`${date}_${item}`} className="runs__run">{ item }</small>)}
               </div>
             }
             <h1 className="show__venue">{ locationName }</h1>

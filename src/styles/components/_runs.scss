@@ -1,0 +1,17 @@
+.runs {
+  display: flex;
+  &__run {
+    display: inline-block;
+    background-color: $dark-blue;
+    color: $white;
+    padding: $gutter/4 $gutter/2;
+    font-size: 0.9rem;
+    font-weight: 900;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+
+    &:not(:last-of-type) {
+      margin-right: $gutter/4;
+    }
+  }
+}
