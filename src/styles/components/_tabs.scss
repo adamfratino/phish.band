@@ -1,0 +1,28 @@
+.tabs {
+  background-color: rgba($dark-blue, 0.4);
+  border: 1rem solid $dark-blue;
+  margin-top: $gutter;
+
+  &__list {
+    border-bottom: 1rem solid $dark-blue;
+    border-right: 1rem solid $dark-blue;
+    color: $white;
+    display: inline-flex;
+    font-size: 1.4rem;
+    font-weight: 900;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+
+    li {
+      background-color: $dark-blue;
+      cursor: pointer;
+      padding: $gutter/2 $gutter;
+      &[aria-selected="true"],
+      &:hover {
+        color: $green;
+      }
+    }
+  }
+}

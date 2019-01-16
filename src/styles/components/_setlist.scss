@@ -7,7 +7,7 @@
   }
 
   &__set {
-    flex: 1;
+    flex: auto;
     margin: 0;
     padding: 0;
 
@@ -47,14 +47,13 @@
     }
 
     &.segue_true {
-      &::after {
-        content: "➤";
-        font-size: 65%;
-        margin: .3rem 0 0 1rem;
-      }
-
       & + li {
-        margin-left: $gutter/2;
+        // margin-left: $gutter/2;
+        &::before {
+          content: "➤";
+          font-size: 65%;
+          margin: .3rem 1rem 0 0;
+        }
       }
     }
 

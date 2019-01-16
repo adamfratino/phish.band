@@ -8,19 +8,19 @@ import Setlist from './Setlist'
 import ShowsCardControls from './ShowsCardControls'
 import Thumbnail from './Thumbnail'
 
-// import Geocode from 'react-geocode'
-// const apiKeys = require('../data/apiKeys.json')
-// Geocode.setApiKey(apiKeys.geocode)
+import Geocode from 'react-geocode'
+const apiKeys = require('../data/apiKeys.json')
+Geocode.setApiKey(apiKeys.geocode)
 
 class ShowsCardDetails extends React.Component {
-  // state = {
-  //   address: ''
-  // }
+  state = {
+    address: ''
+  }
 
-  // componentDidMount() {
-  //   const { lat, lon } = this.props.location
-  //   this.toCityState(lat, lon)
-  // }
+  componentDidMount() {
+    // const { lat, lon } = this.props.location
+    // this.toCityState(lat, lon)
+  }
 
   render() {
     const { date, run, locationName, set1, set2, set3, encore, thumbnail } = this.props
@@ -66,31 +66,31 @@ class ShowsCardDetails extends React.Component {
     )
   }
 
-  // toCityState(lat, lon) {
-  //   Geocode.fromLatLng(lat, lon).then(
-  //     response => {
-  //       let address = {}
-  //       let results = response.results[0].address_components
-  //
-  //       results.forEach((result, i) => {
-  //         let component = response.results[0].address_components[i]
-  //
-  //         if (component.types.includes('sublocality') || component.types.includes('locality')) {
-  //           address.city = component.long_name
-  //         } else if (component.types.includes('administrative_area_level_1')) {
-  //           address.state = component.long_name
-  //         } else if (component.types.includes('country')) {
-  //           address.country = component.long_name
-  //         }
-  //       })
-  //
-  //       this.setState({
-  //         address: `${address.city}, ${address.state}`
-  //       })
-  //     },
-  //     error => console.error(error)
-  //   )
-  // }
+  toCityState(lat, lon) {
+    Geocode.fromLatLng(lat, lon).then(
+      response => {
+        let address = {}
+        let results = response.results[0].address_components
+
+        results.forEach((result, i) => {
+          let component = response.results[0].address_components[i]
+
+          if (component.types.includes('sublocality') || component.types.includes('locality')) {
+            address.city = component.long_name
+          } else if (component.types.includes('administrative_area_level_1')) {
+            address.state = component.long_name
+          } else if (component.types.includes('country')) {
+            address.country = component.long_name
+          }
+        })
+
+        this.setState({
+          address: `${address.city}, ${address.state}`
+        })
+      },
+      error => console.error(error)
+    )
+  }
 }
 
 export default ShowsCardDetails

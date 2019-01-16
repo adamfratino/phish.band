@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ShowDetailsHeader from '../components/ShowDetailsHeader'
 import ShowDetailsInfo from '../components/ShowDetailsInfo'
 import ShowDetailsMap from '../components/ShowDetailsMap'
+import ShowDetailsCharts from '../components/ShowDetailsCharts'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -23,24 +25,47 @@ class ShowDetails extends React.Component {
 
     return (
       <div className="show-details">
-        <ShowDetailsHeader
-          run={run}
-          venue={locationName}
-          date={id}
-        />
-        <ShowDetailsInfo
-          date={id}
-          location={location}
-          set1={set1}
-          set2={set2}
-          set3={set3}
-          encore={encore}
-          thumbnail={thumbnail}
-        />
-        <ShowDetailsMap
-          lat={location.lat}
-          lon={location.lon}
-        />
+        { this.props.data.loading
+            ? <div>Loading</div>
+            : <React.Fragment>
+                <ShowDetailsHeader
+                  run={run}
+                  venue={locationName}
+                  date={id}
+                />
+                <ShowDetailsInfo
+                  date={id}
+                  location={location}
+                  set1={set1}
+                  set2={set2}
+                  set3={set3}
+                  encore={encore}
+                  thumbnail={thumbnail}
+                />
+
+              <Tabs className="tabs">
+                  <TabList className="tabs__list">
+                    <Tab>First</Tab>
+                    <Tab>Second</Tab>
+                    <Tab>Encore</Tab>
+                  </TabList>
+                  <TabPanel className="tabs__panel">
+                    <ShowDetailsCharts set={set1} />
+                  </TabPanel>
+                  <TabPanel>
+                    <ShowDetailsCharts set={set2} />
+                  </TabPanel>
+                  <TabPanel>
+                    <ShowDetailsCharts set={encore} />
+                  </TabPanel>
+                </Tabs>
+
+                <ShowDetailsMap
+                  lat={location.lat}
+                  lon={location.lon}
+                />
+              </React.Fragment>
+         }
       </div>
     )
   }

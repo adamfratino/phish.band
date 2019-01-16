@@ -8,7 +8,7 @@ class ShowsCardControls extends React.Component {
     return (
       <div className="shows-card__controls">
         <AccordionItemTitle className="shows-card__button shows-card__button--toggle"></AccordionItemTitle>
-        <Link to ={path} className="shows-card__button shows-card__button--details">Details</Link>
+        <Link to={path} className="shows-card__button shows-card__button--details">Details</Link>
       </div>
     )
   }

@@ -5,12 +5,12 @@ import Setlist from './Setlist'
 import Thumbnail from './Thumbnail'
 
 const apiKeys = require('../data/apiKeys.json')
-DarkSkyApi.apiKey = apiKeys.darksky2
+DarkSkyApi.apiKey = apiKeys.darksky
 
 class ShowDetailsInfo extends React.Component {
   state = {
     weather: {
-      summary: '',
+      summary: 'API LIMIT REACHED',
       icon: 'clear-night',
       loaded: false
     }
@@ -42,7 +42,6 @@ class ShowDetailsInfo extends React.Component {
 
     if (location.lat !== 0 && location.lon !== 0 && !this.state.weather.loaded) {
       this.getForecast(formattedDate, location.lat, location.lon)
-      console.log(this.state);
     }
 
     return (

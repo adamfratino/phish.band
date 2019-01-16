@@ -8,16 +8,18 @@ const client = contentful.createClient({
   accessToken: apiKeys.contentful.accessToken
 })
 
-const error = err => console.log(err)
-
 export function loadShows() {
-  return dispatch =>
-    client.getEntries({
+  return dispatch =>{
+    dispatch(actions.dataLoading())
+    return client.getEntries({
       content_type: 'book',
       order: '-fields.date'
+    }).then(({items}) => {
+      // setTimeout(() => dispatch(actions.loadShowsSuccess(items)), 3000)
+      dispatch(actions.loadShowsSuccess(items))
+    }).catch(error => {
+      console.log(error)
+      dispatch(actions.dataLoading(false))
     })
-      .then(({items}) => {
-        dispatch(actions.loadShowsSuccess(items))
-      })
-      .catch(error)
+  }
 }
