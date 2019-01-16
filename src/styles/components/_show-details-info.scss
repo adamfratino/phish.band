@@ -23,6 +23,7 @@ $sidebar-width: 30rem;
     grid-gap: $gutter;
     grid-template-columns: repeat(2, 1fr);
     margin-bottom: $gutter;
+
     &--card {
       align-items: center;
       background-color: $dark-blue;
@@ -33,10 +34,13 @@ $sidebar-width: 30rem;
       height: calc(#{$sidebar-width}/2 - #{$gutter}/2);
       justify-content: center;
       padding: $gutter;
-      &::after {
+      &::after,
+      &.show-weather span {
+        display: inline-block;
         font-size: 1.2rem;
-        padding-top: $gutter/4;
+        margin-top: auto;
       }
+
       &.song-total::after {
         content: "Songs";
       }

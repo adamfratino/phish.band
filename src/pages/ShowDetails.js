@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ShowDetailsHeader from '../components/ShowDetailsHeader'
 import ShowDetailsInfo from '../components/ShowDetailsInfo'
+import ShowDetailsMap from '../components/ShowDetailsMap'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -18,21 +19,27 @@ class ShowDetails extends React.Component {
     let details = {}
     if (shows.length) details = match.fields
 
-    const { locationName, run, set1, set2, set3, encore, thumbnail } = details
+    const {locationName, run, set1, set2, set3, encore, thumbnail, location = {lat: 0, lon: 0}} = details
 
     return (
       <div className="show-details">
         <ShowDetailsHeader
-          run={ run }
-          venue={ locationName }
-          date={ id }
+          run={run}
+          venue={locationName}
+          date={id}
         />
         <ShowDetailsInfo
+          date={id}
+          location={location}
           set1={set1}
           set2={set2}
           set3={set3}
           encore={encore}
           thumbnail={thumbnail}
+        />
+        <ShowDetailsMap
+          lat={location.lat}
+          lon={location.lon}
         />
       </div>
     )
