@@ -1,9 +1,6 @@
 .show-details {
   padding: $gutter #{$gutter + $controls-width} $gutter;
   flex: 1;
-  &:last-child {
-    padding-right: $gutter;
-  }
 
   &__container {
     background-color: $green;

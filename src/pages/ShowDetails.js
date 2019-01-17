@@ -30,7 +30,7 @@ class ShowDetails extends React.Component {
     let details = {}
     if (shows.length) details = match.fields
 
-    const {locationName, run, set1, set2, set3, encore, thumbnail, location = {lat: 0, lon: 0}} = details
+    const {locationName, run, set1, set2, set3, encore, thumbnail, location } = details
 
     return (
       <div className="show-details__container">
@@ -74,6 +74,7 @@ class ShowDetails extends React.Component {
                   </Tabs>
 
                   <ShowDetailsMap
+                    key={id}
                     lat={location.lat}
                     lon={location.lon}
                   />

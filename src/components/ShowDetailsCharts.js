@@ -14,7 +14,7 @@ class ShowDetailsCharts extends React.Component {
           label: '',
           fill: true,
           lineTension: 0,
-          backgroundColor: 'rgba(2,42,49,0)',
+          backgroundColor: 'rgba(2,42,49,0.4)',
           borderColor: 'rgba(2,42,49,1)',
           borderCapStyle: 'butt',
           borderDash: [],
