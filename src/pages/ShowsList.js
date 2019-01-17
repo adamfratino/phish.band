@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { ReactComponent as Loading } from '../assets/icons/bouncingDonut.svg'
 import ShowsCard from '../components/ShowsCard'
 
 class ShowsList extends React.Component {
@@ -9,7 +10,9 @@ class ShowsList extends React.Component {
     return (
       <React.Fragment>
         { this.props.data.loading
-            ? <div>Loading</div>
+            ? <div className="loading-container">
+                <Loading />
+              </div>
             : <ul className="shows-list">
                 { shows.map(({fields}, i) =>
                   <ShowsCard key={`card_${i}`} {...fields} />

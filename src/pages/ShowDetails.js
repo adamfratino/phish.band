@@ -6,6 +6,7 @@ import ShowDetailsHeader from '../components/ShowDetailsHeader'
 import ShowDetailsInfo from '../components/ShowDetailsInfo'
 import ShowDetailsMap from '../components/ShowDetailsMap'
 import ShowDetailsCharts from '../components/ShowDetailsCharts'
+import { ReactComponent as Loading } from '../assets/icons/bouncingDonut.svg'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -39,7 +40,9 @@ class ShowDetails extends React.Component {
         }
         <div className="show-details">
           { this.props.data.loading
-              ? <div>Loading</div>
+              ? <div className="loading-container">
+                  <Loading />
+                </div>
               : <React.Fragment>
                   <ShowDetailsHeader
                     run={run}
