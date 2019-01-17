@@ -1,4 +1,4 @@
 export const convertToSeconds = time => {
-  const seconds = time.split(':').reduce((acc,time) => (60 * acc) + +time);
-  return seconds
+  const [min, seconds] = time.split(':').map(n => +n)
+  return min * 60 + seconds
 }

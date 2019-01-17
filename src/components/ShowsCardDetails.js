@@ -26,6 +26,8 @@ class ShowsCardDetails extends React.Component {
     const { date, run, locationName, set1, set2, set3, encore, thumbnail } = this.props
     // const { address } = this.state
 
+    console.log(this.props);
+
     return (
       <Accordion onClick={ toggleAccordion }>
         <AccordionItem>
