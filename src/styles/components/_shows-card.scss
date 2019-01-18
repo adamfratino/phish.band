@@ -27,7 +27,7 @@
     display: grid;
     grid-template-columns: 14rem 1fr 15rem;
     grid-gap: $gutter*2;
-    padding: $gutter;
+    padding: $gutter $gutter*2;
     @include max-screen(414px) {
       padding: $gutter;
       flex-direction: column;
@@ -162,6 +162,6 @@
     display: grid;
     grid-template-columns: 14rem 1fr;
     grid-gap: $gutter*2;
-    padding: 0 $gutter $gutter*2;
+    padding: 0 $gutter*2 $gutter*2;
   }
 }

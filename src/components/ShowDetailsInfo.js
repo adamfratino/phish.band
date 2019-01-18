@@ -90,10 +90,7 @@ class ShowDetailsInfo extends React.Component {
             </div>
           }
           <div className="show-details__info__card show-weather">
-            {
-
-            }
-            <DarkSky name="darksky" iconId={this.state.weather.icon} className="show-weather-icon" />
+            <DarkSky name="darksky" iconId={this.state.weather.icon} className="show-weather-icon" key={this.state.weather.icon}/>
             <span className="show-weather-summary">{ this.state.weather.summary }</span>
           </div>
           {thumbnail &&
