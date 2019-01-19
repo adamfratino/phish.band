@@ -9,10 +9,28 @@ const SearchField = () => (
     appId={apiKeys.algolia.id}
     apiKey={apiKeys.algolia.search}
     indexName="Shows"
+    onSearchStateChange={showSearchResults}
   >
     <Search />
   </InstantSearch>
 );
+
+function showSearchResults() {
+  const input = document.querySelector('.ais-SearchBox-input')
+  const results = document.querySelector('.ais-Hits')
+
+  if (input.value.length >= 4) {
+    results.classList.add('is-visible')
+  } else {
+    results.classList.remove('is-visible')
+  }
+}
+
+function clearSearchResults() {
+  const results = document.querySelector('.ais-Hits')
+  document.querySelector('.ais-SearchBox-reset').click()
+  results.classList.remove('is-visible')
+}
 
 function Search() {
   return (
@@ -30,7 +48,7 @@ function Search() {
 const Hit = ({ hit }) => {
   let formattedDate = hit.date.split('T')[0]
   return (
-    <Link to={`/show/${formattedDate}`} className="search-dropdown">
+    <Link to={`/show/${formattedDate}`} className="search-dropdown" onClick={clearSearchResults}>
       <span>{hit.locationName}</span>
       <span>{formattedDate}</span>
     </Link>

@@ -8,11 +8,10 @@
   .ais-SearchBox {
     input {
       background-color: $green;
-      border: 0;
-      height: $header-height/2;
+      border: 1rem solid $dark-blue;
+      height: $header-height;
       width: 100%;
       padding: $gutter/2;
-      padding-left: $gutter;
     }
 
     input,
@@ -29,14 +28,18 @@
   }
 
   .ais-Hits {
+    display: none;
     background-color: $dark-blue;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
+    &.is-visible {
+      display: block;
+    }
 
     ul {
-      padding: $gutter/2;
+      padding: 0 $gutter/2 $gutter/2;
       margin: 0;
       list-style: none;
 
