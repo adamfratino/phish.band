@@ -15,8 +15,8 @@ export function loadShows() {
       content_type: 'book',
       order: '-fields.date'
     }).then(({items}) => {
-      setTimeout(() => dispatch(actions.loadShowsSuccess(items)), 1500)
-      // dispatch(actions.loadShowsSuccess(items))
+      // setTimeout(() => dispatch(actions.loadShowsSuccess(items)), 1500)
+      dispatch(actions.loadShowsSuccess(items))
     }).catch(error => {
       console.log(error)
       dispatch(actions.dataLoading(false))

@@ -47,6 +47,7 @@ function Search() {
 
 const Hit = ({ hit }) => {
   let formattedDate = hit.date.split('T')[0]
+
   return (
     <Link to={`/show/${formattedDate}`} className="search-dropdown" onClick={clearSearchResults}>
       <span>{hit.locationName}</span>
