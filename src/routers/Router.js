@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import ScrollToTop from '../utilities/ScrollToTop'
 import Header from '../components/Header'
 import Homepage from '../pages/Homepage'
 import ShowsList from '../pages/ShowsList'
@@ -12,18 +13,20 @@ import NotFound from '../pages/NotFound'
 const Router = () => (
   <BrowserRouter>
     <React.Fragment>
-      <Header />
-      <main className="main">
-        <Switch>
-          <Route path="/" component={Homepage} exact />
-          <Route path="/year" component={Year} exact />
-          <Route path="/shows" component={ShowsList} exact />
-          <Route path ="/show/:id" component={ShowDetails} />
-          <Route path="/albums" component={Albums} exact />
-          <Route component={NotFound} />
-        </Switch>
-      </main>
-      <Footer />
+      <ScrollToTop>
+        <Header />
+        <main className="main">
+          <Switch>
+            <Route path="/" component={Homepage} exact />
+            <Route path="/year" component={Year} exact />
+            <Route path="/shows" component={ShowsList} exact />
+            <Route path ="/show/:id" component={ShowDetails} />
+            <Route path="/albums" component={Albums} exact />
+            <Route component={NotFound} />
+          </Switch>
+        </main>
+        <Footer />
+      </ScrollToTop>
     </React.Fragment>
   </BrowserRouter>
 )
