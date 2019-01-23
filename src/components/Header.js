@@ -61,7 +61,7 @@ const Header = () => (
     <NavLink to="/">Phish.band</NavLink>
     <SearchField />
     <div>
-      <NavLink activeClassName="is-active" to="/year">Years</NavLink>
+      <NavLink activeClassName="is-active" to="/year/2018">Years</NavLink>
       <NavLink activeClassName="is-active" to="/shows">Shows</NavLink>
     </div>
   </header>

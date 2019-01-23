@@ -18,7 +18,7 @@ const Router = () => (
         <main className="main">
           <Switch>
             <Route path="/" component={Homepage} exact />
-            <Route path="/year" component={Year} exact />
+            <Route path="/year/:id" component={Year} exact />
             <Route path="/shows" component={ShowsList} exact />
             <Route path ="/show/:id" component={ShowDetails} />
             <Route path="/albums" component={Albums} exact />

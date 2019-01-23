@@ -9,7 +9,8 @@
     input {
       background-color: $green;
       border: 1rem solid $dark-blue;
-      height: calc(#{$header-height} - 2rem);
+      // height: calc(#{$header-height} - 2rem);
+      height: $header-height;
       width: 100%;
       padding: $gutter/2;
     }

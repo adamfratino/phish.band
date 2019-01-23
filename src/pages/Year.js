@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import * as moment from 'moment'
 import { convertToSeconds } from '../utilities/convertToSeconds'
 import { ReactComponent as Loading } from '../assets/icons/bouncingDonut.svg'
+// import YearChartLength from '../components/YearChartLength'
+import YearChartTime from '../components/YearChartTime'
 
 class Year extends React.Component {
   totalTime = []
@@ -10,16 +12,11 @@ class Year extends React.Component {
   sortedSongsByLength = []
 
   render() {
-    this.createSongList()
+    const year = this.props.match.params.id
+    this.createSongList(year)
     if (this.totalTime.length) {
       this.reduceSongTotals()
-      // console.log('ordered by times played', this.sortedSongsByLength);
-      // console.log('ordered by length played', this.sortedSongsByTime);
-      this.sortedSongsByTime.forEach(song => {
-        console.log(`${song.song} was played ${song.duration.length} times for a total of ${moment.duration(song.total, 'seconds').format('hh:mm:ss', { trim: false })}`);
-      })
     }
-
 
     return (
       <React.Fragment>
@@ -27,7 +24,22 @@ class Year extends React.Component {
             ? <div className="loading-container">
                 <Loading />
               </div>
-            : <div>check console log</div>
+            : <div className="year">
+                <h1 className="year-title">{year} Phish in Review</h1>
+                <div className="year__header">
+                  <div className="year__header--details">
+                    <span className="year__header--details-title">Song of the Year</span>
+                    <h2>{this.sortedSongsByLength[0].song}</h2>
+                    <h3>Played <span>{this.sortedSongsByLength[0].duration.length} times</span> for <span>{moment.duration(this.sortedSongsByTime[0].total, 'seconds').format('h [hours], m [minutes &] s [seconds]')}</span></h3>
+                  </div>
+
+                  <div className="year__header--details">
+                    <span className="year__header--details-title">Total Songs Played</span>
+                    <h2>{this.sortedSongsByLength.length} songs</h2>
+                  </div>
+                </div>
+                <YearChartTime year={year} songs={this.sortedSongsByTime} />
+              </div>
         }
       </React.Fragment>
     )
@@ -59,19 +71,19 @@ class Year extends React.Component {
     this.sortedSongsByTime = [...this.totalTime.sort(compare)]
   }
 
-  findSong(songName) {
-    const song = this.totalTime.find(song => song.song === songName)
-    if (song) {
-      const seconds = song.duration.reduce((a, b) => a + b)
-      return `${song.song} was played for ${moment.duration(seconds, 'seconds').format('h:mm:ss')}`
-    }
-  }
+  // findSong(songName) {
+  //   const song = this.totalTime.find(song => song.song === songName)
+  //   if (song) {
+  //     const seconds = song.duration.reduce((a, b) => a + b)
+  //     return `${song.song} was played for ${moment.duration(seconds, 'seconds').format('h:mm:ss')}`
+  //   }
+  // }
 
-  createSongList() {
+  createSongList(year) {
     const { shows } = this.props.data
 
     shows.find((item) => {
-      const {set1, set2, set3, encore} = item.fields
+      const {set1, set2, set3, encore, date} = item.fields
       let sets = [set1, set2, set3, encore].filter(item => item)
 
       sets.forEach((set) => {
@@ -79,14 +91,16 @@ class Year extends React.Component {
           const currentSong = song.song
           const index = this.totalTime.findIndex(song => song.song === currentSong)
 
-          if (song.song === currentSong && index === -1) {
-            this.totalTime.push({
-              "song": currentSong,
-              "duration": [convertToSeconds(song.duration)]
-            })
-          } else {
-            let songEntry = this.totalTime.find(song => song.song === currentSong)
-            songEntry.duration.push(convertToSeconds(song.duration))
+          if (date.split('-')[0] === year) {
+            if (song.song === currentSong && index === -1) {
+              this.totalTime.push({
+                "song": currentSong,
+                "duration": [convertToSeconds(song.duration)]
+              })
+            } else {
+              let songEntry = this.totalTime.find(song => song.song === currentSong)
+              songEntry.duration.push(convertToSeconds(song.duration))
+            }
           }
         })
       })
