@@ -5,7 +5,7 @@
 import initialState from '../initialState'
 import * as types from './types'
 
-export default function showsReducer(state = {shows: initialState.data.shows, albums: initialState.data.albums}, action) {
+export default function showsReducer(state = { shows: initialState.data.shows }, action) {
   switch (action.type) {
     case types.DATA_LOADING:
       return {

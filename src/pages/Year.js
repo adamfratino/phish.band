@@ -88,6 +88,7 @@ class Year extends React.Component {
   createSongList(year) {
     const { shows } = this.props.data
 
+    // eslint-disable-next-line
     shows.find((item) => {
       const {set1, set2, set3, encore, date} = item.fields
       let sets = [set1, set2, set3, encore].filter(item => item)

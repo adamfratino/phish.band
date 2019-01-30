@@ -9,11 +9,12 @@ const client = contentful.createClient({
 })
 
 export function loadShows() {
-  return dispatch =>{
+  return dispatch => {
     dispatch(actions.dataLoading())
     return client.getEntries({
       content_type: 'book',
-      order: '-fields.date'
+      order: '-fields.date',
+      limit: 200
     }).then(({items}) => {
       // setTimeout(() => dispatch(actions.loadShowsSuccess(items)), 1000)
       dispatch(actions.loadShowsSuccess(items))

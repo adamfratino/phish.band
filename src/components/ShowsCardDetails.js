@@ -6,7 +6,7 @@ import { toggleAccordion } from '../utilities/toggleAccordion'
 
 import Setlist from './Setlist'
 import ShowsCardControls from './ShowsCardControls'
-import Thumbnail from './Thumbnail'
+// import Thumbnail from './Thumbnail'
 
 import Geocode from 'react-geocode'
 const apiKeys = require('../data/apiKeys.json')
@@ -23,7 +23,7 @@ class ShowsCardDetails extends React.Component {
   }
 
   render() {
-    const { date, run, locationName, set1, set2, set3, encore, thumbnail } = this.props
+    const { date, run, locationName, set1, set2, set3, encore } = this.props
     // const { address } = this.state
 
     return (

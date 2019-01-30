@@ -44,6 +44,7 @@ class YearChartTime extends React.Component {
                   Chart.helpers.each(meta.data.forEach((bar, index) => {
                     const label = data.labels[index];
                     const labelPositionX = 20;
+                    // eslint-disable-next-line
                     const labelWidth = ctx.measureText(label).width + labelPositionX;
 
                     ctx.textBaseline = 'middle';
