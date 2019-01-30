@@ -51,7 +51,9 @@ class ShowsCardDetails extends React.Component {
           <AccordionItemBody>
             <div className="shows-card__body">
               <div className="thumbnail">
-                <Thumbnail src={thumbnail.fields.file.url} />
+                {/* Disable until lazy load is in place
+                  <Thumbnail src={thumbnail.fields.file.url} />
+                */}
               </div>
               <div className="setlist">
                 {set1 && <Setlist {...set1} title={"First"} />}

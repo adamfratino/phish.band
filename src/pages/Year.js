@@ -13,6 +13,7 @@ class Year extends React.Component {
 
   render() {
     const year = this.props.match.params.id
+
     this.createSongList(year)
     if (this.totalTime.length) {
       this.reduceSongTotals()
@@ -27,15 +28,20 @@ class Year extends React.Component {
             : <div className="year">
                 <h1 className="year-title">{year} Phish in Review</h1>
                 <div className="year__header">
-                  <div className="year__header--details">
-                    <span className="year__header--details-title">Song of the Year</span>
+                  <div className="year__header--song">
+                    <span className="year__header--song-title">Song of the Year</span>
                     <h2>{this.sortedSongsByLength[0].song}</h2>
                     <h3>Played <span>{this.sortedSongsByLength[0].duration.length} times</span> for <span>{moment.duration(this.sortedSongsByTime[0].total, 'seconds').format('h [hours], m [minutes &] s [seconds]')}</span></h3>
                   </div>
 
-                  <div className="year__header--details">
-                    <span className="year__header--details-title">Total Songs Played</span>
-                    <h2>{this.sortedSongsByLength.length} songs</h2>
+                  <div className="year__header--totals">
+                    <h2>{this.sortedSongsByLength.length}</h2>
+                    <span className="year__header--totals-footer">Different<br/>Songs Played</span>
+                  </div>
+
+                  <div className="year__header--totals">
+                    <h2>TODO</h2>
+                    <span className="year__header--totals-footer">Shows<br/>Played</span>
                   </div>
                 </div>
                 <YearChartTime year={year} songs={this.sortedSongsByTime} />

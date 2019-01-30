@@ -6,8 +6,8 @@ import * as moment from 'moment'
 class YearChartTime extends React.Component {
   render() {
     const [...songs] = this.props.songs
-    const total = songs.map(song => song.total).slice(0, 49)
-    const names = songs.map(song => song.song.toUpperCase()).slice(0, 49)
+    const total = songs.map(song => song.total).slice(0, 24)
+    const names = songs.map(song => song.song.toUpperCase()).slice(0, 24)
 
     const data = {
       labels: names,
@@ -26,11 +26,11 @@ class YearChartTime extends React.Component {
 
     return (
       <div className="length">
-        <h1>Top 50 Songs</h1>
+        <h1>Top 25 Songs</h1>
         <div className="length-chart">
           <HorizontalBar
             data={data}
-            height={2400}
+            height={1200}
             options={{
               tooltips: { enabled: false },
               maintainAspectRatio: false,
