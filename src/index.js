@@ -7,10 +7,10 @@ import * as serviceWorker from './serviceWorker';
 // Redux Store
 import { Provider } from 'react-redux'
 import { configureStore } from './store'
-import { loadShows } from './store/Shows'
+import { loadYear } from './store/Shows'
 
 const store = configureStore()
-store.dispatch(loadShows())
+store.dispatch(loadYear(2018))
 
 ReactDOM.render((
   <Provider store={store}>
