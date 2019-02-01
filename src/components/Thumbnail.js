@@ -1,12 +1,9 @@
 import React from 'react'
 
-class Thumbnail extends React.Component {
-  render() {
-    const { src } = this.props
-    return (
-      <img src={src} alt=""/>
-    )
-  }
-}
+const Thumbnail = ({ src }) => (
+  <div className="thumbnail">
+    <img src={src} alt=""/>
+  </div>
+)
 
 export default Thumbnail

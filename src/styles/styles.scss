@@ -9,6 +9,10 @@
   box-sizing: border-box;
   &:focus { outline: none; }
 }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 img { vertical-align: middle; }
 h1, h2, h3, h4, h5, h6, p { margin: 0; }
 html { font-size: 62.5%; }
@@ -32,7 +36,8 @@ body {
 @import "layouts/footer";
 
 // Pages
-@import "pages/shows-list";
+@import "pages/shows";
+// @import "pages/shows-list";
 @import "pages/show-details";
 @import "pages/year";
 

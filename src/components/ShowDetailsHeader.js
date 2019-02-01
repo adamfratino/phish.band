@@ -7,7 +7,7 @@ class ShowDetailsHeader extends React.Component {
     const { venue, date, run } = this.props
     return (
       <div className="show-details__header">
-        {run && <Runs run={run} date={date} />}
+        <Runs run={run} date={date} />
         <h1>{ venue }</h1>
         <Moment format="MMMM DD, YYYY" className="show__date" date={ date } />
       </div>

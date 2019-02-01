@@ -8,12 +8,6 @@ import ShowDetailsMap from '../components/ShowDetailsMap'
 import ShowDetailsCharts from '../components/ShowDetailsCharts'
 import { ReactComponent as Loading } from '../assets/icons/bouncingDonut.svg'
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    data: state.data
-  }
-}
-
 class ShowDetails extends React.Component {
   render() {
     const { shows } = this.props.data
@@ -89,6 +83,12 @@ class ShowDetails extends React.Component {
         }
       </div>
     )
+  }
+}
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    data: state.data
   }
 }
 

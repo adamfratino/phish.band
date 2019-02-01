@@ -3,5 +3,6 @@
   background-color: $white;
   & > * {
     @include full-height;
+    padding: $gutter;
   }
 }

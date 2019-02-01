@@ -1,0 +1,15 @@
+.shows {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: $gutter*1.5 $gutter;
+  margin: 0;
+  @include max-screen($breakpoint-tablet) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include max-screen($breakpoint-small) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include max-screen($breakpoint-mobile) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

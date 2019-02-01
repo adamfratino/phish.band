@@ -1,8 +1,8 @@
 .footer {
+  align-items: center;
   background-color: $dark-blue;
   color: $yellow;
-  height: $footer-height;
-  padding: 0 $controls-width;
   display: flex;
-  align-items: center;
+  height: $footer-height;
+  padding: 0 $gutter;
 }
