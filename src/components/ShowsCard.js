@@ -1,12 +1,12 @@
 import React from 'react'
 import Moment from 'react-moment'
 import { Link } from 'react-router-dom'
-// import Runs from './Runs'
+import Runs from './Runs'
 import Thumbnail from './Thumbnail'
 
 const ShowsCard = ({ locationName, date, run, thumbnail }) => (
   <li className="shows-card">
-    {/* <Runs date={date} run={run} /> */}
+    <Runs date={date} run={run} />
     <Link to={`show/${date.split('T')[0]}`}>
       <div className="shows-card__date">
         <Moment format="MMM" date={ date } className="shows-card__date--month" />
