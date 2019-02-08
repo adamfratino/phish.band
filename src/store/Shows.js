@@ -1,5 +1,5 @@
 import * as contentful from 'contentful'
-import * as actions from '../actions/shows'
+import * as actions from './shows/actions'
 
 const apiKeys = require('../data/apiKeys.json')
 
@@ -8,21 +8,20 @@ const client = contentful.createClient({
   accessToken: apiKeys.contentful.accessToken
 })
 
+const error = err => console.log(err)
+
 export function loadShows() {
-  return dispatch => {
-    return client.getEntries({
+  return dispatch =>
+    client.getEntries({
       content_type: 'book',
       order: '-fields.date',
       limit: 1000
-    }).then(({ items }) => {
-      const shows = Object.values(items).map((object, i) => {
-        return object.fields
-      })
-      dispatch(actions.loadShowsSuccess(shows))
-    }).catch(error => {
-      console.log(error)
     })
-  }
+      .then(({items}) => {
+        const shows = Object.values(items).map((object, i) => object.fields)
+        dispatch(actions.loadShowsSuccess(shows))
+      })
+      .catch(error)
 }
 
 export function loadShowsByYear(year) {
@@ -41,22 +40,6 @@ export function loadShowsByYear(year) {
     }).catch(error => {
       console.log(error)
       // dispatch(actions.dataLoading(false))
-    })
-  }
-}
-
-export function loadAlbums() {
-  return dispatch => {
-    // dispatch(actions.dataLoading())
-    return client.getEntries({
-      content_type: 'albums'
-    }).then(({ items }) => {
-      const albums = Object.values(items).map((object, i) => {
-        return object.fields
-      })
-      dispatch(actions.loadAlbumsSuccess(albums))
-    }).catch(error => {
-      console.log(error)
     })
   }
 }

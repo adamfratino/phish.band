@@ -6,14 +6,14 @@ import * as serviceWorker from './serviceWorker';
 
 // Redux Store
 import { Provider } from 'react-redux'
-import configureStore from './store/configureStore'
-import { loadShows, loadAlbums } from './store/Shows'
+import { configureStore } from './store'
+import { loadShows } from './store/Shows'
+import { loadAlbums } from './store/Albums'
 
-// const currentYear = (new Date()).getFullYear()
 const store = configureStore()
 
-store.dispatch(loadAlbums())
 store.dispatch(loadShows())
+store.dispatch(loadAlbums())
 // store.subscribe(() => console.log(store.getState()))
 
 ReactDOM.render((
