@@ -9,7 +9,7 @@ class Shows extends React.Component {
     return (
       <ul className="shows">
         { shows.map((show, i) =>
-          <ShowsCard key={`card_${i}`} {...show} />
+          <ShowsCard key={show.date.split('T')[0]} {...show} />
         )}
       </ul>
     )

@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 
 class Show extends React.Component {
   render() {
-    // const { shows } = this.props
+    const { shows } = this.props
+    console.log(this.props);
 
     return (
       <h1>show</h1>

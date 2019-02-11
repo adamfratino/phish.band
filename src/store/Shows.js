@@ -11,17 +11,17 @@ const client = contentful.createClient({
 const error = err => console.log(err)
 
 export function loadShows() {
-  return dispatch =>
-    client.getEntries({
+  return dispatch => {
+    return client.getEntries({
       content_type: 'book',
       order: '-fields.date',
       limit: 1000
     })
-      .then(({items}) => {
-        const shows = Object.values(items).map((object, i) => object.fields)
-        dispatch(actions.loadShowsSuccess(shows))
-      })
-      .catch(error)
+    .then(({items}) => {
+      const shows = Object.values(items).map((object, i) => object.fields)
+      dispatch(actions.loadShowsSuccess(shows))
+    }).catch(error)
+  }
 }
 
 export function loadShowsByYear(year) {
@@ -32,14 +32,10 @@ export function loadShowsByYear(year) {
       order: '-fields.date',
       'fields.date[gte]': `${year}-01-01T00:01`,
       'fields.date[lte]': `${year}-12-31T11:59`
-    }).then(({ items }) => {
-      const shows = Object.values(items).map((object, i) => {
-        return object.fields
-      })
-      dispatch(actions.loadShowsSuccess(shows))
-    }).catch(error => {
-      console.log(error)
-      // dispatch(actions.dataLoading(false))
     })
+    .then(({ items }) => {
+      const shows = Object.values(items).map((object, i) => object.fields)
+      dispatch(actions.loadShowsSuccess(shows))
+    }).catch(error)
   }
 }
