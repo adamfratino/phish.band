@@ -1,13 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import ShowsCard from '../components/ShowsCard'
-import { loadShows } from '../store/Shows'
+import { loadShowsByYear } from '../store/Shows'
 
 class Shows extends React.Component {
   componentDidMount() {
     const { shows, dispatch } = this.props
-    if (!shows.length) dispatch(loadShows())
-    console.log(this.props);
+    if (!shows.length) dispatch(loadShowsByYear(2018))
   }
 
   render() {
@@ -16,7 +15,7 @@ class Shows extends React.Component {
     return (
       <ul className="shows">
         { shows.map(show =>
-          <ShowsCard key={show.date.split('T')[0]} {...show} />
+          <ShowsCard key={show.date} {...show} />
         )}
       </ul>
     )

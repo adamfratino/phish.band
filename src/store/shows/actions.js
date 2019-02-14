@@ -1,4 +1,6 @@
-export const loadShowsSuccess = (data) => ({
-  type: 'LOAD_SHOWS_SUCCESS',
-  data
+import * as types from './types'
+
+export const loadShowsSuccess = (shows) => ({
+  type: types.LOAD_SHOWS_SUCCESS,
+  shows
 })

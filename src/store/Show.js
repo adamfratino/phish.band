@@ -17,9 +17,8 @@ export function loadCurrentShow(date) {
       'fields.date': date
     })
     .then(({items}) => {
-      console.log(items);
-      // const shows = Object.values(items).map((object, i) => object.fields)
-      // dispatch(actions.loadShowsSuccess(shows))
+      const show = Object.values(items).map((object, i) => object.fields)
+      dispatch(actions.loadShowSuccess(show[0]))
     }).catch(error)
   }
 }

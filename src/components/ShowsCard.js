@@ -7,7 +7,7 @@ import Thumbnail from './Thumbnail'
 const ShowsCard = ({ locationName, date, run, thumbnail }) => (
   <li className="shows-card">
     <Runs date={date} run={run} />
-    <Link to={`show/${date.split('T')[0]}`}>
+    <Link to={`show/${date}`}>
       <div className="shows-card__date">
         <Moment format="MMM" date={ date } className="shows-card__date--month" />
         <Moment format="D" date={ date } className="shows-card__date--day" />

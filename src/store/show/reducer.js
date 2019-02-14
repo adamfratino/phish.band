@@ -1,9 +1,10 @@
-export default (state = [], action) => {
+import initialState from '../initialState'
+import * as types from './types'
+
+export default (state = initialState.show, action) => {
   switch (action.type) {
-    case 'LOAD_SHOW_SUCCESS':
-      return [
-        ...action.data
-      ]
+    case types.LOAD_SHOW_SUCCESS:
+      return action.show
     default:
       return state
   }

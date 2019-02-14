@@ -1,25 +1,33 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loadCurrentShow } from '../store/Show'
+import ShowDetailsHeader from '../components/ShowDetailsHeader'
 
 class Show extends React.Component {
   componentDidMount() {
     const { id: date } = this.props.match.params
-    // const { show, dispatch } = this.props
-    console.log(this.props);
-    // if (!show.length) dispatch(loadCurrentShow(date))
+    const { dispatch } = this.props
+    dispatch(loadCurrentShow(date))
   }
 
   render() {
+    const { locationName: venue, run, date } = this.props.show
+
     return (
-      <h1>show</h1>
+      <div className="show">
+        <ShowDetailsHeader
+          run={run}
+          venue={venue}
+          date={date}
+        />
+      </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    shows: state.shows
+    show: state.show
   }
 }
 
