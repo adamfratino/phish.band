@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { loadCurrentShow } from '../store/Show'
 import ShowDetailsHeader from '../components/ShowDetailsHeader'
+import Loading from '../components/Loading'
 
 class Show extends React.Component {
   componentDidMount() {
@@ -15,11 +16,14 @@ class Show extends React.Component {
 
     return (
       <div className="show">
-        <ShowDetailsHeader
-          run={run}
-          venue={venue}
-          date={date}
-        />
+        { this.props.loading
+          ? <Loading />
+          : <ShowDetailsHeader
+              run={run}
+              venue={venue}
+              date={date}
+            />
+        }
       </div>
     )
   }
@@ -27,7 +31,8 @@ class Show extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    show: state.show
+    show: state.show,
+    loading: state.loading
   }
 }
 

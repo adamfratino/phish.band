@@ -1,1 +1,2 @@
 export const LOAD_SHOW_SUCCESS = 'LOAD_SHOW_SUCCESS'
+export const SHOW_LOADING = 'SHOW_LOADING'
