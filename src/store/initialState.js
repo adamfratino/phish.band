@@ -4,8 +4,8 @@ export default {
     locationName: '',
     date: '',
     location: {
-      lat: '',
-      lon: ''
+      lat: 40.7505621,
+      lon: -73.99347089999998
     },
     encore: [],
     set1: [],

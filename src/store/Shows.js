@@ -1,5 +1,6 @@
 import * as contentful from 'contentful'
 import * as actions from './shows/actions'
+import * as loading from './loading/actions'
 
 const apiKeys = require('../data/apiKeys.json')
 
@@ -12,6 +13,7 @@ const error = err => console.log(err)
 
 export function loadShows() {
   return dispatch => {
+    dispatch(loading.isLoading())
     return client.getEntries({
       content_type: 'book',
       order: '-fields.date',
@@ -19,14 +21,18 @@ export function loadShows() {
     })
     .then(({items}) => {
       const shows = Object.values(items).map((object, i) => object.fields)
-      dispatch(actions.loadShowsSuccess(shows))
+      setTimeout(() => {
+        dispatch(actions.loadShowsSuccess(shows))
+        dispatch(loading.isLoading(false))
+      }, 500)
+
     }).catch(error)
   }
 }
 
 export function loadShowsByYear(year) {
   return dispatch => {
-    // dispatch(actions.dataLoading())
+    dispatch(loading.isLoading())
     return client.getEntries({
       content_type: 'book',
       order: '-fields.date',
@@ -35,7 +41,10 @@ export function loadShowsByYear(year) {
     })
     .then(({ items }) => {
       const shows = Object.values(items).map((object, i) => object.fields)
-      dispatch(actions.loadShowsSuccess(shows))
+      setTimeout(() => {
+        dispatch(actions.loadShowsSuccess(shows))
+        dispatch(loading.isLoading(false))
+      }, 500)
     }).catch(error)
   }
 }

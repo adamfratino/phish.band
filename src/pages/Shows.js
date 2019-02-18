@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ShowsCard from '../components/ShowsCard'
 import { loadShowsByYear } from '../store/Shows'
+import Loading from '../components/Loading'
 
 class Shows extends React.Component {
   componentDidMount() {
@@ -13,18 +14,24 @@ class Shows extends React.Component {
     const { shows } = this.props
 
     return (
-      <ul className="shows">
-        { shows.map(show =>
-          <ShowsCard key={show.date} {...show} />
-        )}
-      </ul>
+      <div>
+      { this.props.loading
+        ? <Loading />
+        : <ul className="shows">
+            { shows.map(show =>
+              <ShowsCard key={show.date} {...show} />
+            )}
+          </ul>
+      }
+      </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    shows: state.shows
+    shows: state.shows,
+    loading: state.loading
   }
 }
 

@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loadCurrentShow } from '../store/Show'
-import ShowDetailsHeader from '../components/ShowDetailsHeader'
+import ShowHeader from '../components/ShowHeader'
+import ShowMap from '../components/ShowMap'
 import Loading from '../components/Loading'
 
 class Show extends React.Component {
@@ -12,17 +13,24 @@ class Show extends React.Component {
   }
 
   render() {
-    const { locationName: venue, run, date } = this.props.show
+    const { locationName: venue, run, date, location } = this.props.show
 
     return (
       <div className="show">
         { this.props.loading
           ? <Loading />
-          : <ShowDetailsHeader
-              run={run}
-              venue={venue}
-              date={date}
-            />
+          : <React.Fragment>
+              <ShowHeader
+                run={run}
+                venue={venue}
+                date={date}
+              />
+              <ShowMap
+                key={date}
+                lat={location.lat}
+                lon={location.lon}
+              />
+            </React.Fragment>
         }
       </div>
     )
