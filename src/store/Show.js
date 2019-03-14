@@ -18,10 +18,10 @@ export function loadCurrentShow(date) {
     })
     .then(({items}) => {
       const show = Object.values(items).map((object, i) => object.fields)
-      setTimeout(() => {
+      // setTimeout(() => {
         dispatch(actions.loadShowSuccess(show[0]))
         dispatch(loading.isLoading(false))
-      }, 500)
+      // }, 500)
 
     })
     .catch(error => {

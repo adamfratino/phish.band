@@ -21,10 +21,10 @@ export function loadShows() {
     })
     .then(({items}) => {
       const shows = Object.values(items).map((object, i) => object.fields)
-      setTimeout(() => {
+      // setTimeout(() => {
         dispatch(actions.loadShowsSuccess(shows))
         dispatch(loading.isLoading(false))
-      }, 500)
+      // }, 500)
 
     }).catch(error)
   }
@@ -41,10 +41,10 @@ export function loadShowsByYear(year) {
     })
     .then(({ items }) => {
       const shows = Object.values(items).map((object, i) => object.fields)
-      setTimeout(() => {
+      // setTimeout(() => {
         dispatch(actions.loadShowsSuccess(shows))
         dispatch(loading.isLoading(false))
-      }, 500)
+      // }, 500)
     }).catch(error)
   }
 }
