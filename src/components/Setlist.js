@@ -1,28 +1,37 @@
-import React from 'react'
-import { convertToSeconds } from '../utilities/convertToSeconds'
+import React from "react";
+// import { convertToSeconds } from '../utilities/convertToSeconds'
 
 class Setlist extends React.Component {
   render() {
-    const { title } = this.props
-    const songs = Object.keys(this.props).map((k) => this.props[k].song).filter(item => item)
-    const isSegue = Object.keys(this.props).map((k) => this.props[k].segue).filter(item => item)
-    const durations = Object.keys(this.props).map((k) => this.props[k].duration).filter(item => item)
+    const { title } = this.props;
+    const songs = Object.keys(this.props)
+      .map(k => this.props[k].song)
+      .filter(item => item);
+    const isSegue = Object.keys(this.props)
+      .map(k => this.props[k].segue)
+      .filter(item => item);
+    const durations = Object.keys(this.props)
+      .map(k => this.props[k].duration)
+      .filter(item => item);
 
     return (
       <div className="setlist__set">
-        <strong className="setlist__title">{ title }</strong>
+        <strong className="setlist__title">{title}</strong>
         <ol>
-          {songs.map((song, i) =>
-            <li key={`song_${i}`} className={`setlist__song segue_${isSegue[i]}`}>
+          {songs.map((song, i) => (
+            <li
+              key={`song_${i}`}
+              className={`setlist__song segue_${isSegue[i]}`}
+            >
               <span>
-                { song }
+                {song}
                 {<small>{durations[i]}</small>}
               </span>
             </li>
-          )}
+          ))}
         </ol>
       </div>
-    )
+    );
     // const { title, showDuration, showDetails } = this.props
     // const songs = Object.keys(this.props).map((k) => this.props[k].song).filter(item => item)
     // const durations = Object.keys(this.props).map((k) => this.props[k].duration).filter(item => item)
@@ -53,4 +62,4 @@ class Setlist extends React.Component {
   }
 }
 
-export default Setlist
+export default Setlist;

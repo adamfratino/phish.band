@@ -1,21 +1,12 @@
-import { createStore, applyMiddleware } from 'redux'
-import { rootReducer } from './rootReducer'
-import reduxImmutableStateInvariant from 'redux-immutable-state-invariant'
-import thunk from 'redux-thunk'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import createSagaMiddleware from 'redux-saga'
-
-const sagaMiddleware = createSagaMiddleware()
+import { createStore, applyMiddleware } from "redux";
+import { rootReducer } from "./rootReducer";
+import reduxImmutableStateInvariant from "redux-immutable-state-invariant";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 export function configureStore(initialState) {
   return createStore(
     rootReducer,
-    composeWithDevTools(
-      applyMiddleware(
-        sagaMiddleware,
-        thunk,
-        reduxImmutableStateInvariant()
-      )
-    )
-  )
+    composeWithDevTools(applyMiddleware(thunk, reduxImmutableStateInvariant()))
+  );
 }
