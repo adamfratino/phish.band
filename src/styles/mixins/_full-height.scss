@@ -1,5 +1,0 @@
-@mixin full-height() {
-  &:only-child {
-    min-height: calc(100vh - (#{$header-height} + #{$footer-height}));
-  }
-}
