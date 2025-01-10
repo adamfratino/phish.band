@@ -31,7 +31,7 @@ export const MessageForm = () => {
       setHasSubmitted(true);
       console.log("form successfully submitted!");
     } catch (err) {
-      console.log("form submission failed!");
+      console.log("form submission failed!", err);
     }
   };
 
@@ -42,13 +42,13 @@ export const MessageForm = () => {
           congrats, you did it!
         </h1>
         <h2 className="text-xs mb-6">
-          it'll take a few moments to rebuild the site
+          it&apos;ll take a few moments to rebuild the site
         </h2>
         <Link
           href="/"
           className="text-[mediumseagreen] underline hover:no-underline"
         >
-          go back to see if it's updated
+          go back to see if it&apos;s updated
         </Link>
       </div>
     );
