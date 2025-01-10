@@ -13,9 +13,6 @@ export default async function Protected() {
 
   return (
     <main className=" w-full max-w-md">
-      <h1 className="text-2xl mb-2 text-center font-bold tracking-tight">
-        post something cool
-      </h1>
       <MessageForm />
     </main>
   );

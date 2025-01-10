@@ -1,7 +1,8 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRef, useState } from "react";
+import Link from "next/link";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { schema, type FormSchema } from "./schema";
@@ -15,61 +16,76 @@ export const MessageForm = () => {
   const {
     register,
     handleSubmit,
-    // setValue,
-    // setError,
     formState: { errors, isSubmitting },
   } = form;
+
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const onSubmit: SubmitHandler<FormSchema> = async (formData) => {
     console.log("attempting to submit form...");
 
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
+      form.reset();
       submitForm(formData);
+      setHasSubmitted(true);
       console.log("form successfully submitted!");
     } catch (err) {
       console.log("form submission failed!");
     }
   };
 
+  if (hasSubmitted) {
+    return (
+      <div className="flex flex-col gap-2 w-full max-w-md font-bold items-center uppercase">
+        <h1 className="text-4xl mb-2 text-center font-bold tracking-tight">
+          congrats, you did it!
+        </h1>
+        <h2 className="text-xs mb-6">
+          it'll take a few moments to rebuild the site
+        </h2>
+        <Link
+          href="/"
+          className="text-[mediumseagreen] underline hover:no-underline"
+        >
+          go back to see if it's updated
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col w-full max-w-md"
     >
+      <h1 className="text-4xl mb-2 text-center font-bold tracking-tight">
+        post something cool
+      </h1>
       <textarea
         {...register("big_text")}
         id="big-text"
         placeholder="big text"
-        className="mb-4 h-24 text-sm rounded-md w-full text-black p-2 outline-none focus:outline-2 focus:outline-[mediumseagreen] outline-offset-2"
+        className={`mb-4 h-24 text-sm rounded-md w-full text-black p-2 outline-none focus:outline-2 focus:outline-[gold] outline-offset-2 border-2 ${
+          errors.big_text ? "outline-[tomato]" : "outline-[mediumseagreen]"
+        }`}
       />
-      {/* {errors.big_text && (
-          <div className="absolute top-full text-xs text-red-500">
-            {errors.big_text.message}
-          </div>
-        )} */}
       <input
         {...register("small_text")}
         id="small-text"
         placeholder="small text"
-        className="mb-4 h-10 text-sm rounded-md w-full text-black indent-2 outline-none focus:outline-2 focus:outline-[mediumseagreen] outline-offset-2"
+        className={`mb-4 h-10 text-sm rounded-md w-full text-black p-2 outline-none focus:outline-2 focus:outline-[gold] outline-offset-2 border-2 ${
+          errors.small_text ? "outline-[tomato]" : "outline-[mediumseagreen]"
+        }`}
       />
-      {/* {errors.smal_text && (
-          <div className="absolute top-full text-xs text-red-500">
-            {errors.small_text.message}
-          </div>
-        )} */}
       <input
         {...register("link")}
         id="small-text"
         placeholder="link (optional)"
-        className="mb-4 h-10 text-sm rounded-md w-full text-black indent-2 outline-none focus:outline-2 focus:outline-[mediumseagreen] outline-offset-2"
+        className={`mb-4 h-10 text-sm rounded-md w-full text-black p-2 outline-none focus:outline-2 focus:outline-[gold] outline-offset-2 border-2 ${
+          errors.link ? "outline-[tomato]" : "outline-[mediumseagreen]"
+        }`}
       />
-      {/* {errors.link && (
-          <div className="absolute top-full text-xs text-red-500">
-            {errors.link.message}
-          </div>
-        )} */}
       <button
         type="submit"
         className="font-bold ml-auto py-1 px-3 w-full whitespace-nowrap rounded-md h-10 text-sm transition-colors focus-visible:outline-none  bg-[mediumseagreen] text-background hover:bg-[mediumseagreen]/90"

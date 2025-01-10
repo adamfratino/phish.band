@@ -23,7 +23,7 @@ export const schema = z.object({
       SMALL_TEXT_MAX,
       `small text should be at least ${SMALL_TEXT_MAX} characters`
     ),
-  link: z.string().url().optional(),
+  link: z.string().url().or(z.literal("")),
 });
 
 export type FormSchema = z.infer<typeof schema>;
