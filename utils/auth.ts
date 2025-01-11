@@ -6,7 +6,7 @@ export interface SessionData {
 }
 
 export const sessionOptions: SessionOptions = {
-  password: process.env.IRON_SESSION_SECRET!,
+  password: process.env.NEXT_PUBLIC_IRON_SESSION_SECRET!,
   cookieName: "_auth",
   cookieOptions: {
     secure: process.env.NODE_ENV == "production",
