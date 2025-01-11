@@ -1,10 +1,18 @@
 "use server";
 
 import { AtpAgent } from "@atproto/api";
+import { redirect } from "next/navigation";
 
+import { getSession } from "@/utils/auth";
 import { supabase } from "@/utils/supabase/client";
 
 import type { FormSchema } from "./schema";
+
+export async function logout() {
+  const session = await getSession();
+  session.destroy();
+  redirect("/");
+}
 
 export async function submitForm(formData: FormSchema) {
   try {

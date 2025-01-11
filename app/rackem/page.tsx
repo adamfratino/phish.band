@@ -8,7 +8,7 @@ export default async function Protected() {
   const session = await getSession();
 
   if (!session.isAuthenticated) {
-    redirect("/luis");
+    redirect(process.env.NEXT_PUBLIC_LOGIN_PATH!);
   }
 
   return (

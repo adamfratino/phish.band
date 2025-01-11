@@ -13,7 +13,7 @@ export default async function SignIn(props: Props) {
   const session = await getSession();
 
   if (session.isAuthenticated) {
-    redirect("/rackem");
+    redirect(process.env.NEXT_PUBLIC_POST_PATH!);
   }
 
   return (

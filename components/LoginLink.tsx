@@ -6,7 +6,12 @@ import { usePathname } from "next/navigation";
 export const LoginLink = () => {
   const pathname = usePathname();
 
-  if (pathname === "/luis" || pathname === "/rackem") return null;
+  if (
+    pathname === "/" + process.env.NEXT_PUBLIC_LOGIN_PATH! ||
+    pathname === "/" + process.env.NEXT_PUBLIC_POST_PATH!
+  ) {
+    return null;
+  }
 
   return (
     <Link

@@ -33,7 +33,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className="antialiased p-4 bg-background h-[100dvh] w-screen flex flex-col items-center justify-center">
+      <body className="antialiased py-4 px-8 bg-background h-[100dvh] w-screen flex flex-col items-center justify-center">
         {children}
         <GoHomeLink />
         <LoginLink />
