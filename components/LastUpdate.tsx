@@ -13,7 +13,7 @@ export const LastUpdate = ({ createdAt }: { createdAt: Date }) => {
   }).format(date);
 
   return (
-    <p className="fixed bottom-0 right-0 p-4 text-xs font-bold uppercase">
+    <p className="fixed bottom-0 mx-auto p-4 text-xs font-bold uppercase">
       Last updated {formattedDate}
     </p>
   );

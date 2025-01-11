@@ -63,11 +63,11 @@ export const MessageForm = () => {
         <h1 className="text-xl md:text-2xl mb-8 text-center font-bold tracking-tight uppercase">
           ok, post something clever
         </h1>
-        <textarea
+        <input
           {...register("big_text")}
           id="big-text"
           placeholder="big text"
-          className={`mb-4 h-24 text-sm rounded-md w-full text-black p-2 outline-none focus:outline-2 focus:outline-[gold] outline-offset-2 border-2 ${
+          className={`mb-4 h-10 text-sm rounded-md w-full text-black p-2 outline-none focus:outline-2 focus:outline-[gold] outline-offset-2 border-2 ${
             errors.big_text ? "outline-[tomato]" : "outline-[mediumseagreen]"
           }`}
         />

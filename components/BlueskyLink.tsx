@@ -2,7 +2,7 @@ export const BlueskyLink = () => (
   <a
     href="https://bsky.app/profile/phish.band"
     target="_blank"
-    className="p-4 fixed flex bottom-0 justify-center"
+    className="p-4 fixed flex bottom-8 justify-center"
   >
     <BlueskySvg className="fill-white size-5" />
   </a>
