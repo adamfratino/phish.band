@@ -54,12 +54,14 @@ export async function submitForm(formData: FormSchema) {
             byteStart: messageWithoutLink.length + 2,
             byteEnd: messageWithLink.length,
           },
-          features: [
-            {
-              $type: "app.bsky.richtext.facet#link",
-              uri: link,
-            },
-          ],
+          features: link
+            ? [
+                {
+                  $type: "app.bsky.richtext.facet#link",
+                  uri: link,
+                },
+              ]
+            : [],
         },
       ],
       createdAt: new Date().toISOString(),
