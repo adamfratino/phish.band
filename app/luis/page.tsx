@@ -1,5 +1,8 @@
-import { getSession } from "@/utils/auth";
+import Link from "next/link";
 import { redirect } from "next/navigation";
+
+import { getSession } from "@/utils/auth";
+
 import { auth } from "./actions";
 
 interface Props {
@@ -16,8 +19,8 @@ export default async function SignIn(props: Props) {
 
   return (
     <main className=" w-full max-w-md">
-      <h1 className="text-2xl mb-2 text-center font-bold tracking-tight">
-        are you cool?
+      <h1 className="text-xl md:text-2xl mb-8 text-center font-bold tracking-tight uppercase">
+        are you clever?
       </h1>
       <form action={auth} className="flex flex-col gap-3">
         <input

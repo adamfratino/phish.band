@@ -10,6 +10,24 @@ export async function submitForm(formData: FormSchema) {
 
     if (error) throw error;
 
+    const buildHookURL = process.env.VERCEL_BUILD_HOOK_URL;
+
+    const response = await fetch(buildHookURL!, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      console.error(
+        "Failed to trigger Vercel build hook:",
+        response.statusText
+      );
+    } else {
+      console.log("Vercel build triggered successfully");
+    }
+
     return data;
   } catch (err) {
     console.error(err);

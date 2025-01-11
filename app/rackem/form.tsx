@@ -55,44 +55,46 @@ export const MessageForm = () => {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col w-full max-w-md"
-    >
-      <h1 className="text-4xl mb-2 text-center font-bold tracking-tight">
-        post something cool
-      </h1>
-      <textarea
-        {...register("big_text")}
-        id="big-text"
-        placeholder="big text"
-        className={`mb-4 h-24 text-sm rounded-md w-full text-black p-2 outline-none focus:outline-2 focus:outline-[gold] outline-offset-2 border-2 ${
-          errors.big_text ? "outline-[tomato]" : "outline-[mediumseagreen]"
-        }`}
-      />
-      <input
-        {...register("small_text")}
-        id="small-text"
-        placeholder="small text"
-        className={`mb-4 h-10 text-sm rounded-md w-full text-black p-2 outline-none focus:outline-2 focus:outline-[gold] outline-offset-2 border-2 ${
-          errors.small_text ? "outline-[tomato]" : "outline-[mediumseagreen]"
-        }`}
-      />
-      <input
-        {...register("link")}
-        id="small-text"
-        placeholder="link (optional)"
-        className={`mb-4 h-10 text-sm rounded-md w-full text-black p-2 outline-none focus:outline-2 focus:outline-[gold] outline-offset-2 border-2 ${
-          errors.link ? "outline-[tomato]" : "outline-[mediumseagreen]"
-        }`}
-      />
-      <button
-        type="submit"
-        className="font-bold ml-auto py-1 px-3 w-full whitespace-nowrap rounded-md h-10 text-sm transition-colors focus-visible:outline-none  bg-[mediumseagreen] text-background hover:bg-[mediumseagreen]/90"
-        disabled={isSubmitting}
+    <>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col w-full max-w-md"
       >
-        {isSubmitting ? "submitting..." : "submit"}
-      </button>
-    </form>
+        <h1 className="text-xl md:text-2xl mb-8 text-center font-bold tracking-tight uppercase">
+          ok, post something clever
+        </h1>
+        <textarea
+          {...register("big_text")}
+          id="big-text"
+          placeholder="big text"
+          className={`mb-4 h-24 text-sm rounded-md w-full text-black p-2 outline-none focus:outline-2 focus:outline-[gold] outline-offset-2 border-2 ${
+            errors.big_text ? "outline-[tomato]" : "outline-[mediumseagreen]"
+          }`}
+        />
+        <input
+          {...register("small_text")}
+          id="small-text"
+          placeholder="small text"
+          className={`mb-4 h-10 text-sm rounded-md w-full text-black p-2 outline-none focus:outline-2 focus:outline-[gold] outline-offset-2 border-2 ${
+            errors.small_text ? "outline-[tomato]" : "outline-[mediumseagreen]"
+          }`}
+        />
+        <input
+          {...register("link")}
+          id="small-text"
+          placeholder="link (optional)"
+          className={`mb-4 h-10 text-sm rounded-md w-full text-black p-2 outline-none focus:outline-2 focus:outline-[gold] outline-offset-2 border-2 ${
+            errors.link ? "outline-[tomato]" : "outline-[mediumseagreen]"
+          }`}
+        />
+        <button
+          type="submit"
+          className="font-bold ml-auto py-1 px-3 w-full whitespace-nowrap rounded-md h-10 text-sm transition-colors focus-visible:outline-none  bg-[mediumseagreen] text-background hover:bg-[mediumseagreen]/90"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "submitting..." : "submit"}
+        </button>
+      </form>
+    </>
   );
 };

@@ -3,7 +3,7 @@ import { z } from "zod";
 const BIG_TEXT_MIN = 3;
 const BIG_TEXT_MAX = 80;
 const SMALL_TEXT_MIN = 3;
-const SMALL_TEXT_MAX = 40;
+const SMALL_TEXT_MAX = 60;
 
 export const schema = z.object({
   big_text: z
