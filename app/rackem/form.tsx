@@ -46,8 +46,9 @@ export const MessageForm = () => {
           Your post has been submitted!
         </h1>
         <p className="text-xs">
-          It'll take a few moments to update our database. Once that's done,
-          your new post will be visible on the <Link href="/">homepage</Link>.
+          It&apos;ll take a few moments to update our database. Once that&apos;s
+          done, your new post will be visible on the{" "}
+          <Link href="/">homepage</Link>.
         </p>
         <p className="text-xs">
           In the meantime, head on over to our{" "}
