@@ -11,7 +11,7 @@ export default async function Home() {
   if (error) return <div>Failed to load data</div>;
   if (!data) return <div>Loading...</div>;
 
-  const { link, big_text, small_text, created_at } = data[0];
+  const { link, big_text, small_text } = data[0];
 
   return (
     <div className="max-w-screen-md font-bold flex flex-col items-center uppercase whitespace-pre-line text-balance">
