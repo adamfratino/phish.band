@@ -6,10 +6,13 @@ import { usePathname } from "next/navigation";
 export const LoginLink = () => {
   const pathname = usePathname();
 
-  if (pathname === "/luis") return null;
+  if (pathname === "/luis" || pathname === "/rackem") return null;
 
   return (
-    <Link href="/luis" className="p-4 fixed top-0 right-0">
+    <Link
+      href="/luis"
+      className="p-4 fixed top-0 right-0 hover:scale-125 active:scale-105 transition-transform"
+    >
       <SnowflakeSvg className="stroke-white size-5" />
     </Link>
   );

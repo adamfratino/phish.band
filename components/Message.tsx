@@ -11,7 +11,7 @@ export const Message = ({
   smallText = "Clever Crew '24",
   link = "https://www.youtube.com/watch?v=KmHjM5q3tis",
 }: Message) => (
-  <div className="hover:opacity-90 contents">
+  <div className="flex flex-col items-center hover:opacity-80 transition-opacity">
     <ConditionalWrapper
       condition={Boolean(link)}
       wrapper={<a href={link} target="_blank" className="contents" />}

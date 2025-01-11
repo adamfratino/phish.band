@@ -4,7 +4,7 @@ export const BlueskyLink = () => (
     target="_blank"
     className="p-4 fixed flex bottom-8 justify-center"
   >
-    <BlueskySvg className="fill-white size-5" />
+    <BlueskySvg className="fill-white size-5 transition-all hover:scale-125 active:scale-105 hover:fill-[#208bfe]" />
   </a>
 );
 
