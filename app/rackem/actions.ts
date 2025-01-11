@@ -12,7 +12,7 @@ export async function submitForm(formData: FormSchema) {
 
     if (error) throw error;
 
-    const buildHookURL = process.env.NEXT_PUBLIC_VERCEL_BUILD_HOOK_URL;
+    const buildHookURL = process.env.VERCEL_BUILD_HOOK_URL;
 
     const response = await fetch(buildHookURL!, {
       method: "POST",
@@ -42,8 +42,8 @@ export async function submitForm(formData: FormSchema) {
     const messageWithLink = messageWithoutLink + "\n\n" + link;
 
     await agent.login({
-      identifier: process.env.NEXT_PUBLIC_BLUESKY_IDENTIFIER!,
-      password: process.env.NEXT_PUBLIC_BLUESKY_PASSWORD!,
+      identifier: process.env.BLUESKY_IDENTIFIER!,
+      password: process.env.BLUESKY_PASSWORD!,
     });
 
     await agent.post({
