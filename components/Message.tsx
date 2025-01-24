@@ -19,14 +19,14 @@ export const Message = ({
     return (
       <a href={link} target="_blank" className="contents">
         <h1 className="text-4xl mb-3 text-center">{bigText}</h1>
-        <h2 className="text-xs">{smallText}</h2>
+        <h2 className="text-xs text-center">{smallText}</h2>
       </a>
     );
   } else {
     return (
       <>
         <h1 className="text-4xl mb-3 text-center">{bigText}</h1>
-        <h2 className="text-xs">{smallText}</h2>
+        <h2 className="text-xs text-center">{smallText}</h2>
       </>
     );
   }
